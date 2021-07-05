@@ -1,0 +1,9 @@
+vendor_name = ModelSim
+source_file = 1, D:/dMogan_Bool/dMogan_Bool_1.bdf
+source_file = 1, D:/dMogan_Bool/db/dMogan_Bool.cbx.xml
+design_name = dMogan_Bool_1
+instance = comp, \YLeft~output\, YLeft~output, dMogan_Bool_1, 1
+instance = comp, \YRight~output\, YRight~output, dMogan_Bool_1, 1
+instance = comp, \C~input\, C~input, dMogan_Bool_1, 1
+instance = comp, \A~input\, A~input, dMogan_Bool_1, 1
+instance = comp, \B~input\, B~input, dMogan_Bool_1, 1

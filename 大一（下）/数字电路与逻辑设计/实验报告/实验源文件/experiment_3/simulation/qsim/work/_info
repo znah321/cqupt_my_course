@@ -1,0 +1,157 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\experiment_3\simulation\qsim
+vblock1
+Z1 ITZc38=VH4m:BOhiSQM8hR2
+Z2 VIfKa`K>TMKMEH9gE5_TVc3
+Z3 dD:\experiment_3\simulation\qsim
+Z4 w1588212357
+Z5 8project.vo
+Z6 Fproject.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 !s100 =9UZhzX:QnoolKMbOCdTd0
+Z10 !s108 1588212360.554000
+Z11 !s107 project.vo|
+Z12 !s90 -work|work|project.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vblock1_vlg_check_tst
+Z13 I9IV1WW15a;`:Cb4e@Y:d_2
+Z14 VmK@3=QDTe?N0ALXaVKWIV3
+R3
+Z15 w1588212354
+Z16 8Waveform1.vwf.vt
+Z17 FWaveform1.vwf.vt
+L0 61
+R7
+r1
+31
+Z18 !s108 1588212360.648000
+Z19 !s107 Waveform1.vwf.vt|
+Z20 !s90 -work|work|Waveform1.vwf.vt|
+R8
+Z21 !s100 ]MPQ7K[]ldULAK9mI;NS[1
+!i10b 1
+!s85 0
+!s101 -O0
+vblock1_vlg_sample_tst
+Z22 IU3gc>`:4a3hH`R2UB@i;C3
+Z23 V7XPI?9OXZ[ljm_2dmf[Sj0
+R3
+R15
+R16
+R17
+L0 29
+R7
+r1
+31
+R18
+R19
+R20
+R8
+Z24 !s100 0B_5>AMYW=X:E@k1ge_]J3
+!i10b 1
+!s85 0
+!s101 -O0
+vblock1_vlg_vec_tst
+Z25 IN2Knko5aiAXVR[I49Tgf?0
+Z26 VFlYXWBRmm4KIn>L3OWBL93
+R3
+R15
+R16
+R17
+Z27 L0 210
+R7
+r1
+31
+R18
+R19
+R20
+R8
+Z28 !s100 IHPFHbZ:mJnjS9hH>?S7>0
+!i10b 1
+!s85 0
+!s101 -O0
+vblock2
+Z29 !s100 o1TRKLPhUaANbfZSe0:<a1
+Z30 I]RIfn>0HB[3_9<OeG5m[n1
+Z31 V>TT359LQAFHBa3AZ:>X2m0
+R3
+Z32 w1588214972
+R5
+R6
+L0 31
+R7
+r1
+31
+R12
+R8
+!i10b 1
+!s85 0
+Z33 !s108 1588214973.823000
+R11
+!s101 -O0
+vblock2_vlg_check_tst
+!i10b 1
+Z34 !s100 X4BEO>WPPUfT5K0I1<ZSB1
+Z35 IjIUiNi@4Ezh`e;hU9]N];2
+Z36 VcBV[HUM6MM?[VZ1MUHHee0
+R3
+Z37 w1588214970
+Z38 8Waveform2.vwf.vt
+Z39 FWaveform2.vwf.vt
+L0 61
+R7
+r1
+!s85 0
+31
+Z40 !s108 1588214973.926000
+Z41 !s107 Waveform2.vwf.vt|
+Z42 !s90 -work|work|Waveform2.vwf.vt|
+!s101 -O0
+R8
+vblock2_vlg_sample_tst
+!i10b 1
+Z43 !s100 6e?gQ>J_Jk`h:nLX>cK=`3
+Z44 I=@b@AUOMoDzcTORSdVN9U1
+Z45 VGiRL]<zaZG`D5Wj]U<cTQ3
+R3
+R37
+R38
+R39
+L0 29
+R7
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R8
+vblock2_vlg_vec_tst
+!i10b 1
+Z46 !s100 c]7ULOS5c?4T:hD4In<^U3
+Z47 IL=eDX<5HVEEhh=0;>KHA=0
+Z48 VCOlQVi9imY`J2jfMo]dNf1
+R3
+R37
+R38
+R39
+R27
+R7
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R8

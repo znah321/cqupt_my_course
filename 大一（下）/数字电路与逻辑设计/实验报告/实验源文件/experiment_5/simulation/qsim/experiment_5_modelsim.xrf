@@ -1,0 +1,13 @@
+vendor_name = ModelSim
+source_file = 1, D:/experiment_5/Waveform1.vwf
+source_file = 1, D:/experiment_5/mux2.bdf
+source_file = 1, D:/experiment_5/mux3.bdf
+source_file = 1, D:/experiment_5/Waveform_mux2.vwf
+source_file = 1, D:/experiment_5/mux3_en.bdf
+source_file = 1, D:/experiment_5/Waveform2.vwf
+source_file = 1, D:/experiment_5/xxx.bdf
+source_file = 1, D:/experiment_5/xxx.vwf
+source_file = 1, D:/experiment_5/db/experiment_5.cbx.xml
+design_name = xxx
+instance = comp, \pin_name2~output , pin_name2~output, xxx, 1
+instance = comp, \pin_name1~input , pin_name1~input, xxx, 1

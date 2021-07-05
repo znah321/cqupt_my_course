@@ -1,0 +1,456 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "06/10/2020 22:38:09"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    MUX151
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module MUX151_vlg_sample_tst(
+	Address,
+	d0,
+	d1,
+	d2,
+	d3,
+	d4,
+	d5,
+	d6,
+	d7,
+	sampler_tx
+);
+input [2:0] Address;
+input [3:0] d0;
+input [3:0] d1;
+input [3:0] d2;
+input [3:0] d3;
+input [3:0] d4;
+input [3:0] d5;
+input [3:0] d6;
+input [3:0] d7;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(Address or d0 or d1 or d2 or d3 or d4 or d5 or d6 or d7)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module MUX151_vlg_check_tst (
+	Code,
+	sampler_rx
+);
+input [3:0] Code;
+input sampler_rx;
+
+reg [3:0] Code_expected;
+
+reg [3:0] Code_prev;
+
+reg [3:0] Code_expected_prev;
+
+reg [3:0] last_Code_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:1] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 1'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	Code_prev = Code;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	Code_expected_prev = Code_expected;
+end
+
+
+// expected Code[ 3 ]
+initial
+begin
+	Code_expected[3] = 1'bX;
+end 
+// expected Code[ 2 ]
+initial
+begin
+	Code_expected[2] = 1'bX;
+end 
+// expected Code[ 1 ]
+initial
+begin
+	Code_expected[1] = 1'bX;
+end 
+// expected Code[ 0 ]
+initial
+begin
+	Code_expected[0] = 1'bX;
+end 
+// generate trigger
+always @(Code_expected or Code)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected Code = %b | ",Code_expected_prev);
+	$display("| real Code = %b | ",Code_prev);
+`endif
+	if (
+		( Code_expected_prev[0] !== 1'bx ) && ( Code_prev[0] !== Code_expected_prev[0] )
+		&& ((Code_expected_prev[0] !== last_Code_exp[0]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Code[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Code_expected_prev);
+		$display ("     Real value = %b", Code_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Code_exp[0] = Code_expected_prev[0];
+	end
+	if (
+		( Code_expected_prev[1] !== 1'bx ) && ( Code_prev[1] !== Code_expected_prev[1] )
+		&& ((Code_expected_prev[1] !== last_Code_exp[1]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Code[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Code_expected_prev);
+		$display ("     Real value = %b", Code_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Code_exp[1] = Code_expected_prev[1];
+	end
+	if (
+		( Code_expected_prev[2] !== 1'bx ) && ( Code_prev[2] !== Code_expected_prev[2] )
+		&& ((Code_expected_prev[2] !== last_Code_exp[2]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Code[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Code_expected_prev);
+		$display ("     Real value = %b", Code_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Code_exp[2] = Code_expected_prev[2];
+	end
+	if (
+		( Code_expected_prev[3] !== 1'bx ) && ( Code_prev[3] !== Code_expected_prev[3] )
+		&& ((Code_expected_prev[3] !== last_Code_exp[3]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Code[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Code_expected_prev);
+		$display ("     Real value = %b", Code_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Code_exp[3] = Code_expected_prev[3];
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module MUX151_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [2:0] Address;
+reg [3:0] d0;
+reg [3:0] d1;
+reg [3:0] d2;
+reg [3:0] d3;
+reg [3:0] d4;
+reg [3:0] d5;
+reg [3:0] d6;
+reg [3:0] d7;
+// wires                                               
+wire [3:0] Code;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+MUX151 i1 (
+// port map - connection between master ports and signals/registers   
+	.Address(Address),
+	.Code(Code),
+	.d0(d0),
+	.d1(d1),
+	.d2(d2),
+	.d3(d3),
+	.d4(d4),
+	.d5(d5),
+	.d6(d6),
+	.d7(d7)
+);
+// Address[ 2 ]
+initial
+begin
+	Address[2] = 1'b0;
+	Address[2] = #400000 1'b1;
+	Address[2] = #400000 1'b0;
+end 
+// Address[ 1 ]
+initial
+begin
+	repeat(2)
+	begin
+		Address[1] = 1'b0;
+		Address[1] = #200000 1'b1;
+		# 200000;
+	end
+	Address[1] = 1'b0;
+end 
+// Address[ 0 ]
+always
+begin
+	Address[0] = 1'b0;
+	Address[0] = #100000 1'b1;
+	#100000;
+end 
+// d0[ 3 ]
+initial
+begin
+	d0[3] = 1'b0;
+end 
+// d0[ 2 ]
+initial
+begin
+	d0[2] = 1'b0;
+end 
+// d0[ 1 ]
+initial
+begin
+	d0[1] = 1'b0;
+end 
+// d0[ 0 ]
+initial
+begin
+	d0[0] = 1'b0;
+end 
+// d1[ 3 ]
+initial
+begin
+	d1[3] = 1'b0;
+end 
+// d1[ 2 ]
+initial
+begin
+	d1[2] = 1'b0;
+end 
+// d1[ 1 ]
+initial
+begin
+	d1[1] = 1'b0;
+end 
+// d1[ 0 ]
+initial
+begin
+	d1[0] = 1'b1;
+end 
+// d2[ 3 ]
+initial
+begin
+	d2[3] = 1'b0;
+end 
+// d2[ 2 ]
+initial
+begin
+	d2[2] = 1'b0;
+end 
+// d2[ 1 ]
+initial
+begin
+	d2[1] = 1'b1;
+end 
+// d2[ 0 ]
+initial
+begin
+	d2[0] = 1'b0;
+end 
+// d3[ 3 ]
+initial
+begin
+	d3[3] = 1'b0;
+end 
+// d3[ 2 ]
+initial
+begin
+	d3[2] = 1'b0;
+end 
+// d3[ 1 ]
+initial
+begin
+	d3[1] = 1'b1;
+end 
+// d3[ 0 ]
+initial
+begin
+	d3[0] = 1'b1;
+end 
+// d4[ 3 ]
+initial
+begin
+	d4[3] = 1'b0;
+end 
+// d4[ 2 ]
+initial
+begin
+	d4[2] = 1'b1;
+end 
+// d4[ 1 ]
+initial
+begin
+	d4[1] = 1'b0;
+end 
+// d4[ 0 ]
+initial
+begin
+	d4[0] = 1'b0;
+end 
+// d5[ 3 ]
+initial
+begin
+	d5[3] = 1'b0;
+end 
+// d5[ 2 ]
+initial
+begin
+	d5[2] = 1'b1;
+end 
+// d5[ 1 ]
+initial
+begin
+	d5[1] = 1'b0;
+end 
+// d5[ 0 ]
+initial
+begin
+	d5[0] = 1'b1;
+end 
+// d6[ 3 ]
+initial
+begin
+	d6[3] = 1'b0;
+end 
+// d6[ 2 ]
+initial
+begin
+	d6[2] = 1'b1;
+end 
+// d6[ 1 ]
+initial
+begin
+	d6[1] = 1'b1;
+end 
+// d6[ 0 ]
+initial
+begin
+	d6[0] = 1'b0;
+end 
+// d7[ 3 ]
+initial
+begin
+	d7[3] = 1'b0;
+end 
+// d7[ 2 ]
+initial
+begin
+	d7[2] = 1'b1;
+end 
+// d7[ 1 ]
+initial
+begin
+	d7[1] = 1'b1;
+end 
+// d7[ 0 ]
+initial
+begin
+	d7[0] = 1'b1;
+end 
+
+MUX151_vlg_sample_tst tb_sample (
+	.Address(Address),
+	.d0(d0),
+	.d1(d1),
+	.d2(d2),
+	.d3(d3),
+	.d4(d4),
+	.d5(d5),
+	.d6(d6),
+	.d7(d7),
+	.sampler_tx(sampler)
+);
+
+MUX151_vlg_check_tst tb_out(
+	.Code(Code),
+	.sampler_rx(sampler)
+);
+endmodule
+

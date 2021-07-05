@@ -1,0 +1,9 @@
+|lab4
+reset <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+Q[0] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+CP => inst.CLK
+CP => inst9.IN1
+
+

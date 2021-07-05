@@ -1,0 +1,5 @@
+|xxx
+pin_name2 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+pin_name1 => inst.IN0
+
+

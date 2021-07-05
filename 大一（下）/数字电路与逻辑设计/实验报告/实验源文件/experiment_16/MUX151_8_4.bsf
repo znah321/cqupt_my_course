@@ -1,0 +1,99 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 16 16 232 208)
+	(text "MUX151_8_4" (rect 5 0 110 17)(font "Arial" (font_size 9)))
+	(text "inst" (rect 8 173 31 188)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Address[2..0]" (rect 0 0 92 16)(font "Arial" (font_size 8)))
+		(text "Address[2..0]" (rect 21 27 113 43)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "d0[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d0[3..0]" (rect 21 43 72 59)(font "Arial" (font_size 8)))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "d1[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d1[3..0]" (rect 21 59 72 75)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "d2[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d2[3..0]" (rect 21 75 72 91)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "d3[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d3[3..0]" (rect 21 91 72 107)(font "Arial" (font_size 8)))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "d4[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d4[3..0]" (rect 21 107 72 123)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "d5[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d5[3..0]" (rect 21 123 72 139)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 16 128)(line_width 3))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "d6[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d6[3..0]" (rect 21 139 72 155)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 16 144)(line_width 3))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "d7[3..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
+		(text "d7[3..0]" (rect 21 155 72 171)(font "Arial" (font_size 8)))
+		(line (pt 0 160)(pt 16 160)(line_width 3))
+	)
+	(port
+		(pt 216 32)
+		(output)
+		(text "Code[3..0]" (rect 0 0 70 16)(font "Arial" (font_size 8)))
+		(text "Code[3..0]" (rect 125 27 195 43)(font "Arial" (font_size 8)))
+		(line (pt 216 32)(pt 200 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 200 176))
+	)
+)

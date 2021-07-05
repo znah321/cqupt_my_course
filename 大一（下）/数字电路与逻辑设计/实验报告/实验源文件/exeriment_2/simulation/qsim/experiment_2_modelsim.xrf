@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, D:/exeriment_2/compare_gate.bdf
+source_file = 1, D:/exeriment_2/compare_gate_Waveform.vwf
+source_file = 1, D:/exeriment_2/block1.bdf
+source_file = 1, D:/exeriment_2/Waveform1.vwf
+source_file = 1, D:/exeriment_2/block2.bdf
+source_file = 1, D:/exeriment_2/Waveform2.vwf
+source_file = 1, D:/exeriment_2/db/experiment_2.cbx.xml
+design_name = block1
+instance = comp, \F~output , F~output, block1, 1
+instance = comp, \B~input , B~input, block1, 1
+instance = comp, \C~input , C~input, block1, 1
+instance = comp, \A~input , A~input, block1, 1
+instance = comp, \D~input , D~input, block1, 1
+instance = comp, \inst15~0 , inst15~0, block1, 1

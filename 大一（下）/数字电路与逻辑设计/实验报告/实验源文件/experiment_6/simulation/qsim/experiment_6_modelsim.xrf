@@ -1,0 +1,16 @@
+vendor_name = ModelSim
+source_file = 1, D:/experiment_6/block1.bdf
+source_file = 1, D:/experiment_6/Waveform1.vwf
+source_file = 1, D:/experiment_6/db/experiment_6.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/others/maxplus2/74151.tdf
+source_file = 1, c:/altera/13.1/quartus/libraries/megafunctions/aglobal.inc
+source_file = 1, c:/altera/13.1/quartus/libraries/others/maxplus2/f74151.bdf
+design_name = block1
+instance = comp, \F~output , F~output, block1, 1
+instance = comp, \GN~input , GN~input, block1, 1
+instance = comp, \B~input , B~input, block1, 1
+instance = comp, \D~input , D~input, block1, 1
+instance = comp, \C~input , C~input, block1, 1
+instance = comp, \A~input , A~input, block1, 1
+instance = comp, \inst|sub|85~0 , inst|sub|85~0, block1, 1
+instance = comp, \inst|sub|85~1 , inst|sub|85~1, block1, 1

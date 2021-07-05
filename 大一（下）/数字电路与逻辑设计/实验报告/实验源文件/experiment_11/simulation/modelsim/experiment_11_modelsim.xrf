@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, D:/experiment_11/lab1.bdf
+source_file = 1, D:/experiment_11/db/experiment_11.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/others/maxplus2/74192.bdf
+design_name = lab1
+instance = comp, \BON~output\, BON~output, lab1, 1
+instance = comp, \Q[3]~output\, Q[3]~output, lab1, 1
+instance = comp, \Q[2]~output\, Q[2]~output, lab1, 1
+instance = comp, \Q[1]~output\, Q[1]~output, lab1, 1
+instance = comp, \Q[0]~output\, Q[0]~output, lab1, 1
+instance = comp, \clk~input\, clk~input, lab1, 1

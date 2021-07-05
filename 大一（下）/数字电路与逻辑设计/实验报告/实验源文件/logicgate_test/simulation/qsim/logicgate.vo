@@ -1,0 +1,146 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+
+// DATE "04/23/2020 20:52:13"
+
+// 
+// Device: Altera EP3C16Q240C8 Package PQFP240
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module four_xorGate (
+	pin_name1,
+	A,
+	B,
+	C,
+	D);
+output 	pin_name1;
+input 	A;
+input 	B;
+input 	C;
+input 	D;
+
+// Design Ports Information
+// pin_name1	=>  Location: PIN_51,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// A	=>  Location: PIN_18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// B	=>  Location: PIN_9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// C	=>  Location: PIN_6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// D	=>  Location: PIN_231,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("logicgate_v.sdo");
+// synopsys translate_on
+
+wire \pin_name1~output_o ;
+wire \B~input_o ;
+wire \C~input_o ;
+wire \A~input_o ;
+wire \D~input_o ;
+wire \inst5~0_combout ;
+
+
+// Location: IOOBUF_X0_Y5_N23
+cycloneiii_io_obuf \pin_name1~output (
+	.i(\inst5~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\pin_name1~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \pin_name1~output .bus_hold = "false";
+defparam \pin_name1~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y26_N15
+cycloneiii_io_ibuf \B~input (
+	.i(B),
+	.ibar(gnd),
+	.o(\B~input_o ));
+// synopsys translate_off
+defparam \B~input .bus_hold = "false";
+defparam \B~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y27_N15
+cycloneiii_io_ibuf \C~input (
+	.i(C),
+	.ibar(gnd),
+	.o(\C~input_o ));
+// synopsys translate_off
+defparam \C~input .bus_hold = "false";
+defparam \C~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y22_N1
+cycloneiii_io_ibuf \A~input (
+	.i(A),
+	.ibar(gnd),
+	.o(\A~input_o ));
+// synopsys translate_off
+defparam \A~input .bus_hold = "false";
+defparam \A~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X7_Y29_N29
+cycloneiii_io_ibuf \D~input (
+	.i(D),
+	.ibar(gnd),
+	.o(\D~input_o ));
+// synopsys translate_off
+defparam \D~input .bus_hold = "false";
+defparam \D~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y26_N8
+cycloneiii_lcell_comb \inst5~0 (
+// Equation(s):
+// \inst5~0_combout  = \B~input_o  $ (\C~input_o  $ (\A~input_o  $ (\D~input_o )))
+
+	.dataa(\B~input_o ),
+	.datab(\C~input_o ),
+	.datac(\A~input_o ),
+	.datad(\D~input_o ),
+	.cin(gnd),
+	.combout(\inst5~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst5~0 .lut_mask = 16'h6996;
+defparam \inst5~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+assign pin_name1 = \pin_name1~output_o ;
+
+endmodule

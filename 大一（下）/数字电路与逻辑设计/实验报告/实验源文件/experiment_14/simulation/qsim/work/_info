@@ -1,0 +1,157 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\experiment_14\simulation\qsim
+vlab1
+Z1 !s100 ZZI]9o_z4PM;C>DY^mIS72
+Z2 IAJ45LzLK44a`TSS?Z<hVg3
+Z3 VafgG3JR^LeU_J@Wg8j;L21
+Z4 dD:\experiment_14\simulation\qsim
+Z5 w1591339180
+Z6 8experiment_14.vo
+Z7 Fexperiment_14.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|experiment_14.vo|
+Z10 o-work work -O0
+Z11 !s108 1591339182.387000
+Z12 !s107 experiment_14.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_check_tst
+Z13 !s100 g;azmeg7EN7WdNf:5Z?Yn1
+Z14 I@LOb7b@eU6REChjdDfF=J3
+Z15 V^EHc=Xi[=Y54X^i[DWNzK2
+R4
+Z16 w1591339178
+Z17 8Waveform1.vwf.vt
+Z18 FWaveform1.vwf.vt
+L0 69
+R8
+r1
+31
+Z19 !s108 1591339182.540000
+Z20 !s107 Waveform1.vwf.vt|
+Z21 !s90 -work|work|Waveform1.vwf.vt|
+R10
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_sample_tst
+Z22 !s100 0i2zEk54KgOJH5KF>59gc0
+Z23 ILYjcRL6<=lB`ASTa>=[7H1
+Z24 VT5R[H_A7131Y_>]fDPTT`2
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+31
+R19
+R20
+R21
+R10
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_vec_tst
+Z25 I>ZzTNML_JGTK4aHQHBESE1
+Z26 VPbAMk81@?Q^0S[F;U`DUN3
+R4
+R16
+R17
+R18
+Z27 L0 271
+R8
+r1
+31
+R19
+R20
+R21
+R10
+Z28 !s100 dH9Yh[M1>:kLk`ijofg4Z3
+!i10b 1
+!s85 0
+!s101 -O0
+vlab2
+Z29 !s100 zMLTXS1A[;UWk204>h=W53
+Z30 I2EA;>@5JVAF;3cYOh?hZj2
+Z31 VNmeDB@6IXl<^o0SRiK`:m3
+R4
+Z32 w1591340371
+R6
+R7
+L0 31
+R8
+r1
+31
+R9
+R10
+!i10b 1
+!s85 0
+Z33 !s108 1591340373.546000
+R12
+!s101 -O0
+vlab2_vlg_check_tst
+!i10b 1
+Z34 !s100 4[I3[W7?<AF2f`<6>Bj@]0
+Z35 I3fA<NJV3Wh`zj@a<EJo0L1
+Z36 V7ld1VDH@93a2NUbgUkGe70
+R4
+Z37 w1591340369
+Z38 8Waveform2.vwf.vt
+Z39 FWaveform2.vwf.vt
+L0 63
+R8
+r1
+!s85 0
+31
+Z40 !s108 1591340373.692000
+Z41 !s107 Waveform2.vwf.vt|
+Z42 !s90 -work|work|Waveform2.vwf.vt|
+!s101 -O0
+R10
+vlab2_vlg_sample_tst
+!i10b 1
+Z43 !s100 0U@S2>CJj6TkmDK4SLc9O2
+Z44 Ih>_dc9LLYdV6eB2AD1TOY1
+Z45 V1BOm5;Mf@UzAf_63VNcUo3
+R4
+R37
+R38
+R39
+L0 29
+R8
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R10
+vlab2_vlg_vec_tst
+!i10b 1
+Z46 !s100 n6jn9FXK?FOEoNR1<@9VZ0
+Z47 IP8<cG:z24IEQ5@ZRaRNd[1
+Z48 VmFb`6Bz@?ohPafIK4X^A30
+R4
+R37
+R38
+R39
+Z49 L0 265
+R8
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R10

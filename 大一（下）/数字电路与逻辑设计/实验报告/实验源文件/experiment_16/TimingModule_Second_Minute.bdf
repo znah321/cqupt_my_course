@@ -1,0 +1,229 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "graphic" (version "1.4"))
+(pin
+	(input)
+	(rect 320 264 488 280)
+	(text "INPUT" (rect 125 0 161 13)(font "Arial" (font_size 6)))
+	(text "Input" (rect 5 0 36 15)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 152 20)(font "Arial" (font_size 6)))
+)
+(pin
+	(output)
+	(rect 552 368 728 384)
+	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
+	(text "S[3..0]" (rect 90 0 130 15)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 552 400 728 416)
+	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
+	(text "S[7..4]" (rect 90 0 130 15)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 792 368 968 384)
+	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
+	(text "M[3..0]" (rect 90 0 131 15)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 792 400 968 416)
+	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
+	(text "M[7..4]" (rect 90 0 131 15)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(symbol
+	(rect 552 240 728 336)
+	(text "Count_Second" (rect 5 0 121 17)(font "Arial" (font_size 9)))
+	(text "inst" (rect 8 77 31 92)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Clock" (rect 0 0 38 16)(font "Arial" (font_size 8)))
+		(text "Clock" (rect 21 27 59 43)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 176 32)
+		(output)
+		(text "Carry_Signal" (rect 0 0 87 16)(font "Arial" (font_size 8)))
+		(text "Carry_Signal" (rect 68 27 155 43)(font "Arial" (font_size 8)))
+		(line (pt 176 32)(pt 160 32))
+	)
+	(port
+		(pt 176 48)
+		(output)
+		(text "S[3..0]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "S[3..0]" (rect 109 43 155 59)(font "Arial" (font_size 8)))
+		(line (pt 176 48)(pt 160 48)(line_width 3))
+	)
+	(port
+		(pt 176 64)
+		(output)
+		(text "S[7..4]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "S[7..4]" (rect 109 59 155 75)(font "Arial" (font_size 8)))
+		(line (pt 176 64)(pt 160 64)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 80))
+	)
+)
+(symbol
+	(rect 792 240 968 336)
+	(text "Count_Minite" (rect 5 0 106 17)(font "Arial" (font_size 9)))
+	(text "inst3" (rect 8 77 39 92)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Clock" (rect 0 0 38 16)(font "Arial" (font_size 8)))
+		(text "Clock" (rect 21 27 59 43)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 176 32)
+		(output)
+		(text "Carry_Signal" (rect 0 0 87 16)(font "Arial" (font_size 8)))
+		(text "Carry_Signal" (rect 68 27 155 43)(font "Arial" (font_size 8)))
+		(line (pt 176 32)(pt 160 32))
+	)
+	(port
+		(pt 176 48)
+		(output)
+		(text "M[3..0]" (rect 0 0 48 16)(font "Arial" (font_size 8)))
+		(text "M[3..0]" (rect 107 43 155 59)(font "Arial" (font_size 8)))
+		(line (pt 176 48)(pt 160 48)(line_width 3))
+	)
+	(port
+		(pt 176 64)
+		(output)
+		(text "M[7..4]" (rect 0 0 48 16)(font "Arial" (font_size 8)))
+		(text "M[7..4]" (rect 107 59 155 75)(font "Arial" (font_size 8)))
+		(line (pt 176 64)(pt 160 64)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 80))
+	)
+)
+(connector
+	(pt 728 272)
+	(pt 792 272)
+)
+(connector
+	(pt 552 272)
+	(pt 488 272)
+)
+(connector
+	(text "S[3..0]" (rect 512 360 552 375)(font "Arial" ))
+	(pt 504 376)
+	(pt 552 376)
+	(bus)
+)
+(connector
+	(text "S[7..4]" (rect 512 392 552 407)(font "Arial" ))
+	(pt 552 408)
+	(pt 504 408)
+	(bus)
+)
+(connector
+	(text "S[3..0]" (rect 736 272 776 287)(font "Arial" ))
+	(pt 728 288)
+	(pt 760 288)
+	(bus)
+)
+(connector
+	(text "S[7..4]" (rect 736 288 776 303)(font "Arial" ))
+	(pt 728 304)
+	(pt 760 304)
+	(bus)
+)
+(connector
+	(text "M[7..4]" (rect 751 392 792 407)(font "Arial" ))
+	(pt 792 408)
+	(pt 744 408)
+	(bus)
+)
+(connector
+	(text "M[3..0]" (rect 750 360 791 375)(font "Arial" ))
+	(pt 792 376)
+	(pt 744 376)
+	(bus)
+)
+(connector
+	(text "M[3..0]" (rect 977 272 1018 287)(font "Arial" ))
+	(pt 1008 288)
+	(pt 968 288)
+	(bus)
+)
+(connector
+	(text "M[7..4]" (rect 976 288 1017 303)(font "Arial" ))
+	(pt 968 304)
+	(pt 1008 304)
+	(bus)
+)

@@ -1,0 +1,4 @@
+library verilog;
+use verilog.vl_types.all;
+entity Bit_Selective_Signal_Generator_vlg_vec_tst is
+end Bit_Selective_Signal_Generator_vlg_vec_tst;

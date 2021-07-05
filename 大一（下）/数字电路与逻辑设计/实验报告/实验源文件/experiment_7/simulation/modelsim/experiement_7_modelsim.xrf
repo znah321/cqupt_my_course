@@ -1,0 +1,14 @@
+vendor_name = ModelSim
+source_file = 1, D:/experiment_7/D_trigger.bdf
+source_file = 1, D:/experiment_7/db/experiement_7.cbx.xml
+design_name = D_trigger
+instance = comp, \Q~output\, Q~output, D_trigger, 1
+instance = comp, \CLRN~input\, CLRN~input, D_trigger, 1
+instance = comp, \PRN~input\, PRN~input, D_trigger, 1
+instance = comp, \inst~1\, inst~1, D_trigger, 1
+instance = comp, \CP~input\, CP~input, D_trigger, 1
+instance = comp, \D~input\, D~input, D_trigger, 1
+instance = comp, \inst~3\, inst~3, D_trigger, 1
+instance = comp, \inst~0\, inst~0, D_trigger, 1
+instance = comp, \inst~_emulated\, inst~_emulated, D_trigger, 1
+instance = comp, \inst~2\, inst~2, D_trigger, 1

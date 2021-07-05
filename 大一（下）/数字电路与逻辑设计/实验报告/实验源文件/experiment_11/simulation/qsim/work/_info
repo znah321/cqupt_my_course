@@ -1,0 +1,157 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\experiment_11\simulation\qsim
+vlab1
+Z1 IPDk0zWL_?zVkmaTdFk<4W1
+Z2 V9@Xa@=J_LVfZ>7Y47P5NG1
+Z3 dD:\experiment_11\simulation\qsim
+Z4 w1590579907
+Z5 8experiment_11.vo
+Z6 Fexperiment_11.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|experiment_11.vo|
+Z9 o-work work -O0
+Z10 !s100 cmZ4PVIcbAed;?e8X?H]o3
+Z11 !s108 1590579909.097000
+Z12 !s107 experiment_11.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_check_tst
+Z13 IYlC7koF6UL7hJQEnZgo:^3
+Z14 VPEK8zmH=b=BoY19`k1VMh3
+R3
+Z15 w1590579905
+Z16 8Waveform1.vwf.vt
+Z17 FWaveform1.vwf.vt
+L0 59
+R7
+r1
+31
+Z18 !s108 1590579909.247000
+Z19 !s107 Waveform1.vwf.vt|
+Z20 !s90 -work|work|Waveform1.vwf.vt|
+R9
+Z21 !s100 oLnM;JVM2:5C9>hWU<ckM2
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_sample_tst
+Z22 ImMSjm_EI5L246UoZ<?M2=2
+Z23 V2>[j>UQTWT2K3OQ_B;Rim2
+R3
+R15
+R16
+R17
+L0 29
+R7
+r1
+31
+R18
+R19
+R20
+R9
+Z24 !s100 e[_F2>V0WYnk0?ZE6gmSJ1
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_vec_tst
+Z25 IVCh_fP`VcJN5O:FH>JLkl1
+Z26 VPbAMk81@?Q^0S[F;U`DUN3
+R3
+R15
+R16
+R17
+Z27 L0 234
+R7
+r1
+31
+R18
+R19
+R20
+R9
+Z28 !s100 QIRILDN4jKUoHQ1PO=>3]2
+!i10b 1
+!s85 0
+!s101 -O0
+vlab2
+Z29 I1;I5`<i;A<WMC5;n^QYL<1
+Z30 VH`HlWMh7EY;5`TC?:RR`P2
+R3
+Z31 w1590583413
+R5
+R6
+L0 31
+R7
+r1
+31
+R8
+R9
+!i10b 1
+Z32 !s100 Zg2m=zdYGg8lE0eDfCBa_2
+!s85 0
+Z33 !s108 1590583414.593000
+R12
+!s101 -O0
+vlab2_vlg_check_tst
+!i10b 1
+!s100 D2SfKkioNKJgG^QzXF3I]2
+IfXJnIX5U250z479jF[g9T1
+V4@HGBICH9Nn_:_XnH5LP63
+R3
+Z34 w1590583410
+Z35 8Waveform2.vwf.vt
+Z36 FWaveform2.vwf.vt
+L0 59
+R7
+r1
+!s85 0
+31
+Z37 !s108 1590583414.742000
+Z38 !s107 Waveform2.vwf.vt|
+Z39 !s90 -work|work|Waveform2.vwf.vt|
+!s101 -O0
+R9
+vlab2_vlg_sample_tst
+!i10b 1
+Z40 !s100 9O2`LUXgX6:Jco4Rzg0W:0
+Z41 IVaX]@7a`U=FGk_3:9mTh02
+Z42 VfBI7:R[<A_jZbQcXYj`P]3
+R3
+R34
+R35
+R36
+L0 29
+R7
+r1
+!s85 0
+31
+R37
+R38
+R39
+!s101 -O0
+R9
+vlab2_vlg_vec_tst
+!i10b 1
+!s100 4jMIOolfK?oL4]MPcVl9a2
+Ihea2gEW@f<TXE29Wg^SMl2
+Z43 VmFb`6Bz@?ohPafIK4X^A30
+R3
+R34
+R35
+R36
+L0 314
+R7
+r1
+!s85 0
+31
+R37
+R38
+R39
+!s101 -O0
+R9

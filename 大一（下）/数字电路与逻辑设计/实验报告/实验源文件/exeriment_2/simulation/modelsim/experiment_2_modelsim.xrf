@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, D:/exeriment_2/compare_gate.bdf
+source_file = 1, D:/exeriment_2/db/experiment_2.cbx.xml
+design_name = compare_gate
+instance = comp, \AGE~output\, AGE~output, compare_gate, 1
+instance = comp, \AEB~output\, AEB~output, compare_gate, 1
+instance = comp, \ALB~output\, ALB~output, compare_gate, 1
+instance = comp, \B~input\, B~input, compare_gate, 1
+instance = comp, \A~input\, A~input, compare_gate, 1
+instance = comp, \inst~0\, inst~0, compare_gate, 1
+instance = comp, \inst3~0\, inst3~0, compare_gate, 1

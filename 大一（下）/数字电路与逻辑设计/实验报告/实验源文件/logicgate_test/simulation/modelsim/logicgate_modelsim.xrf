@@ -1,0 +1,6 @@
+vendor_name = ModelSim
+source_file = 1, D:/logicgate_test/notGate.bdf
+source_file = 1, D:/logicgate_test/db/logicgate.cbx.xml
+design_name = notGate
+instance = comp, \F~output\, F~output, notGate, 1
+instance = comp, \A~input\, A~input, notGate, 1

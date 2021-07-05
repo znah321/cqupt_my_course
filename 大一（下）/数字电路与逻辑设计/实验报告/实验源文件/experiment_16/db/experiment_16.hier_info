@@ -1,0 +1,509 @@
+|Buzzer_Clock_Simulation
+Buzzer <= Buzzer_Clock:inst.Buzzer
+ST => Buzzer_Clock:inst.ST
+Clock => Timing_Module:inst1.Input
+Set_H[0] => Buzzer_Clock:inst.Set_H[0]
+Set_H[1] => Buzzer_Clock:inst.Set_H[1]
+Set_H[2] => Buzzer_Clock:inst.Set_H[2]
+Set_H[3] => Buzzer_Clock:inst.Set_H[3]
+Set_H[4] => Buzzer_Clock:inst.Set_H[4]
+Set_H[5] => Buzzer_Clock:inst.Set_H[5]
+Set_H[6] => Buzzer_Clock:inst.Set_H[6]
+Set_H[7] => Buzzer_Clock:inst.Set_H[7]
+Set_M[0] => Buzzer_Clock:inst.Set_M[0]
+Set_M[1] => Buzzer_Clock:inst.Set_M[1]
+Set_M[2] => Buzzer_Clock:inst.Set_M[2]
+Set_M[3] => Buzzer_Clock:inst.Set_M[3]
+Set_M[4] => Buzzer_Clock:inst.Set_M[4]
+Set_M[5] => Buzzer_Clock:inst.Set_M[5]
+Set_M[6] => Buzzer_Clock:inst.Set_M[6]
+Set_M[7] => Buzzer_Clock:inst.Set_M[7]
+Set_S[0] => Buzzer_Clock:inst.Set_S[0]
+Set_S[1] => Buzzer_Clock:inst.Set_S[1]
+Set_S[2] => Buzzer_Clock:inst.Set_S[2]
+Set_S[3] => Buzzer_Clock:inst.Set_S[3]
+Set_S[4] => Buzzer_Clock:inst.Set_S[4]
+Set_S[5] => Buzzer_Clock:inst.Set_S[5]
+Set_S[6] => Buzzer_Clock:inst.Set_S[6]
+Set_S[7] => Buzzer_Clock:inst.Set_S[7]
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst
+Buzzer <= inst13.DB_MAX_OUTPUT_PORT_TYPE
+ST => inst13.IN0
+S[0] => 7485:inst.A0
+S[1] => 7485:inst.A1
+S[2] => 7485:inst.A2
+S[3] => 7485:inst.A3
+S[4] => 7485:inst4.A0
+S[5] => 7485:inst4.A1
+S[6] => 7485:inst4.A2
+S[7] => 7485:inst4.A3
+Set_S[0] => 7485:inst.B0
+Set_S[1] => 7485:inst.B1
+Set_S[2] => 7485:inst.B2
+Set_S[3] => 7485:inst.B3
+Set_S[4] => 7485:inst4.B0
+Set_S[5] => 7485:inst4.B1
+Set_S[6] => 7485:inst4.B2
+Set_S[7] => 7485:inst4.B3
+H[0] => 7485:inst3.A0
+H[1] => 7485:inst3.A1
+H[2] => 7485:inst3.A2
+H[3] => 7485:inst3.A3
+H[4] => 7485:inst6.A0
+H[5] => 7485:inst6.A1
+H[6] => 7485:inst6.A2
+H[7] => 7485:inst6.A3
+Set_H[0] => 7485:inst3.B0
+Set_H[1] => 7485:inst3.B1
+Set_H[2] => 7485:inst3.B2
+Set_H[3] => 7485:inst3.B3
+Set_H[4] => 7485:inst6.B0
+Set_H[5] => 7485:inst6.B1
+Set_H[6] => 7485:inst6.B2
+Set_H[7] => 7485:inst6.B3
+M[0] => 7485:inst2.A0
+M[1] => 7485:inst2.A1
+M[2] => 7485:inst2.A2
+M[3] => 7485:inst2.A3
+M[4] => 7485:inst5.A0
+M[5] => 7485:inst5.A1
+M[6] => 7485:inst5.A2
+M[7] => 7485:inst5.A3
+Set_M[0] => 7485:inst2.B0
+Set_M[1] => 7485:inst2.B1
+Set_M[2] => 7485:inst2.B2
+Set_M[3] => 7485:inst2.B3
+Set_M[4] => 7485:inst5.B0
+Set_M[5] => 7485:inst5.B1
+Set_M[6] => 7485:inst5.B2
+Set_M[7] => 7485:inst5.B3
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst3
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst3|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst2
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst2|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst4
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst4|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst5
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst5|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst6
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => f7485:sub.a[2]
+a[3] => f7485:sub.a[3]
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => f7485:sub.b[2]
+b[3] => f7485:sub.b[3]
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|Buzzer_Clock_Simulation|Buzzer_Clock:inst|7485:inst6|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1
+H[0] <= Count_Hour:inst2.H[0]
+H[1] <= Count_Hour:inst2.H[1]
+H[2] <= Count_Hour:inst2.H[2]
+H[3] <= Count_Hour:inst2.H[3]
+H[4] <= Count_Hour:inst2.H[4]
+H[5] <= Count_Hour:inst2.H[5]
+H[6] <= Count_Hour:inst2.H[6]
+H[7] <= Count_Hour:inst2.H[7]
+Input => Count_Second:inst.Clock
+M[0] <= Count_Minite:inst3.M[0]
+M[1] <= Count_Minite:inst3.M[1]
+M[2] <= Count_Minite:inst3.M[2]
+M[3] <= Count_Minite:inst3.M[3]
+M[4] <= Count_Minite:inst3.M[4]
+M[5] <= Count_Minite:inst3.M[5]
+M[6] <= Count_Minite:inst3.M[6]
+M[7] <= Count_Minite:inst3.M[7]
+S[0] <= Count_Second:inst.S[0]
+S[1] <= Count_Second:inst.S[1]
+S[2] <= Count_Second:inst.S[2]
+S[3] <= Count_Second:inst.S[3]
+S[4] <= Count_Second:inst.S[4]
+S[5] <= Count_Second:inst.S[5]
+S[6] <= Count_Second:inst.S[6]
+S[7] <= Count_Second:inst.S[7]
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Hour:inst2
+H[0] <= 74390:inst.1QA
+H[1] <= 74390:inst.1QB
+H[2] <= 74390:inst.1QC
+H[3] <= 74390:inst.1QD
+H[4] <= 74390:inst.2QA
+H[5] <= 74390:inst.2QB
+H[6] <= 74390:inst.2QC
+H[7] <= 74390:inst.2QD
+Clock => RS_Latch:inst6.Clock
+Clock => 74390:inst.1CLKA
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Hour:inst2|74390:inst
+2QA <= 34.DB_MAX_OUTPUT_PORT_TYPE
+2CLR => 25.IN0
+2CLKA => 24.IN0
+2QB <= 33.DB_MAX_OUTPUT_PORT_TYPE
+2QD <= 31.DB_MAX_OUTPUT_PORT_TYPE
+2QC <= 32.DB_MAX_OUTPUT_PORT_TYPE
+2CLKB => 27.IN0
+2CLKB => 29.IN1
+1QD <= 3.DB_MAX_OUTPUT_PORT_TYPE
+1CLR => 22.IN0
+1QC <= 5.DB_MAX_OUTPUT_PORT_TYPE
+1QB <= 6.DB_MAX_OUTPUT_PORT_TYPE
+1CLKB => 20.IN1
+1CLKB => 17.IN0
+1QA <= 7.DB_MAX_OUTPUT_PORT_TYPE
+1CLKA => 23.IN0
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Hour:inst2|RS_Latch:inst6
+Reset <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Clock => inst1.IN0
+R => inst.IN1
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Minite:inst3
+Carry_Signal <= RS_Latch:inst6.Reset
+M[0] <= 74390:inst.1QA
+M[1] <= 74390:inst.1QB
+M[2] <= 74390:inst.1QC
+M[3] <= 74390:inst.1QD
+M[4] <= 74390:inst.2QA
+M[5] <= 74390:inst.2QB
+M[6] <= 74390:inst.2QC
+M[7] <= 74390:inst.2QD
+Clock => 74390:inst.1CLKA
+Clock => RS_Latch:inst6.Clock
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Minite:inst3|RS_Latch:inst6
+Reset <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Clock => inst1.IN0
+R => inst.IN1
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Minite:inst3|74390:inst
+2QA <= 34.DB_MAX_OUTPUT_PORT_TYPE
+2CLR => 25.IN0
+2CLKA => 24.IN0
+2QB <= 33.DB_MAX_OUTPUT_PORT_TYPE
+2QD <= 31.DB_MAX_OUTPUT_PORT_TYPE
+2QC <= 32.DB_MAX_OUTPUT_PORT_TYPE
+2CLKB => 27.IN0
+2CLKB => 29.IN1
+1QD <= 3.DB_MAX_OUTPUT_PORT_TYPE
+1CLR => 22.IN0
+1QC <= 5.DB_MAX_OUTPUT_PORT_TYPE
+1QB <= 6.DB_MAX_OUTPUT_PORT_TYPE
+1CLKB => 20.IN1
+1CLKB => 17.IN0
+1QA <= 7.DB_MAX_OUTPUT_PORT_TYPE
+1CLKA => 23.IN0
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Second:inst
+Carry_Signal <= RS_Latch:inst6.Reset
+S[0] <= 74390:inst.1QA
+S[1] <= 74390:inst.1QB
+S[2] <= 74390:inst.1QC
+S[3] <= 74390:inst.1QD
+S[4] <= 74390:inst.2QA
+S[5] <= 74390:inst.2QB
+S[6] <= 74390:inst.2QC
+S[7] <= 74390:inst.2QD
+Clock => 74390:inst.1CLKA
+Clock => RS_Latch:inst6.Clock
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Second:inst|RS_Latch:inst6
+Reset <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Clock => inst1.IN0
+R => inst.IN1
+
+
+|Buzzer_Clock_Simulation|Timing_Module:inst1|Count_Second:inst|74390:inst
+2QA <= 34.DB_MAX_OUTPUT_PORT_TYPE
+2CLR => 25.IN0
+2CLKA => 24.IN0
+2QB <= 33.DB_MAX_OUTPUT_PORT_TYPE
+2QD <= 31.DB_MAX_OUTPUT_PORT_TYPE
+2QC <= 32.DB_MAX_OUTPUT_PORT_TYPE
+2CLKB => 27.IN0
+2CLKB => 29.IN1
+1QD <= 3.DB_MAX_OUTPUT_PORT_TYPE
+1CLR => 22.IN0
+1QC <= 5.DB_MAX_OUTPUT_PORT_TYPE
+1QB <= 6.DB_MAX_OUTPUT_PORT_TYPE
+1CLKB => 20.IN1
+1CLKB => 17.IN0
+1QA <= 7.DB_MAX_OUTPUT_PORT_TYPE
+1CLKA => 23.IN0
+
+

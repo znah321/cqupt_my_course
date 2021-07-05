@@ -1,0 +1,102 @@
+$comment
+	File created using the following command:
+		vcd file experiment_15.msim.vcd -direction
+$end
+$date
+	Mon Jun 15 09:53:42 2020
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module Count_S_vlg_vec_tst $end
+$var reg 1 ! CLK $end
+$var wire 1 " Carry_Sginal $end
+$var wire 1 # S [7] $end
+$var wire 1 $ S [6] $end
+$var wire 1 % S [5] $end
+$var wire 1 & S [4] $end
+$var wire 1 ' S [3] $end
+$var wire 1 ( S [2] $end
+$var wire 1 ) S [1] $end
+$var wire 1 * S [0] $end
+$var wire 1 + sampler $end
+$scope module i1 $end
+$var wire 1 , gnd $end
+$var wire 1 - vcc $end
+$var wire 1 . unknown $end
+$var tri1 1 / devclrn $end
+$var tri1 1 0 devpor $end
+$var tri1 1 1 devoe $end
+$var wire 1 2 Carry_Sginal~output_o $end
+$var wire 1 3 S[7]~output_o $end
+$var wire 1 4 S[6]~output_o $end
+$var wire 1 5 S[5]~output_o $end
+$var wire 1 6 S[4]~output_o $end
+$var wire 1 7 S[3]~output_o $end
+$var wire 1 8 S[2]~output_o $end
+$var wire 1 9 S[1]~output_o $end
+$var wire 1 : S[0]~output_o $end
+$var wire 1 ; CLK~input_o $end
+$var wire 1 < inst|7~0_combout $end
+$var wire 1 = inst|7~feeder_combout $end
+$var wire 1 > inst|7~q $end
+$var wire 1 ? inst|20~combout $end
+$var wire 1 @ inst|6~0_combout $end
+$var wire 1 A inst|6~q $end
+$var wire 1 B inst|5~0_combout $end
+$var wire 1 C inst|5~q $end
+$var wire 1 D inst|3~0_combout $end
+$var wire 1 E inst|3~feeder_combout $end
+$var wire 1 F inst|3~q $end
+$var wire 1 G inst|34~0_combout $end
+$var wire 1 H inst|34~q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0*
+0)
+0(
+0'
+0&
+0%
+0$
+0#
+x+
+0,
+1-
+x.
+1/
+10
+11
+02
+03
+04
+05
+06
+07
+08
+09
+0:
+0;
+1<
+1=
+0>
+1?
+1@
+0A
+1B
+0C
+0D
+0E
+0F
+1G
+0H
+$end
+#1000000

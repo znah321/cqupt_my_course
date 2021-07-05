@@ -1,0 +1,157 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\experiment_13_0605\simulation\qsim
+vlab1
+Z1 Ib<:MgD>9Li]i1@@3IA7FW0
+Z2 V9[@NXNb6=bC6JSDdCfTWF0
+Z3 dD:\experiment_13_0605\simulation\qsim
+Z4 w1591342138
+Z5 8experiment_13_0605.vo
+Z6 Fexperiment_13_0605.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 !s100 Fm7V[AJW7MdPFAREhL?Ua3
+Z10 !s108 1591342140.121000
+Z11 !s107 experiment_13_0605.vo|
+Z12 !s90 -work|work|experiment_13_0605.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_check_tst
+Z13 IQ90QQKRk0Yk?=7hm@fiQ?2
+Z14 V^EHc=Xi[=Y54X^i[DWNzK2
+R3
+Z15 w1591342136
+Z16 8Waveform1.vwf.vt
+Z17 FWaveform1.vwf.vt
+L0 57
+R7
+r1
+31
+Z18 !s108 1591342140.262000
+Z19 !s107 Waveform1.vwf.vt|
+Z20 !s90 -work|work|Waveform1.vwf.vt|
+R8
+Z21 !s100 6f^n>oe8QoIzX^z8bS`7Q1
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_sample_tst
+Z22 IJL47zMDgGRHbQ3LTiPbE?1
+Z23 VVgMNN72Lh8S@;nUO6@]Jb0
+R3
+R15
+R16
+R17
+L0 29
+R7
+r1
+31
+R18
+R19
+R20
+R8
+Z24 !s100 V02R:b[EC@HNC7Eb5FKo12
+!i10b 1
+!s85 0
+!s101 -O0
+vlab1_vlg_vec_tst
+Z25 IzET2ZXXJO1kVYgCL<K>VQ2
+Z26 VPbAMk81@?Q^0S[F;U`DUN3
+R3
+R15
+R16
+R17
+Z27 L0 259
+R7
+r1
+31
+R18
+R19
+R20
+R8
+Z28 !s100 YGZjGO?@R4FYo6<_5HRDF2
+!i10b 1
+!s85 0
+!s101 -O0
+vlab2
+Z29 !s100 ic^14WB9MgJPiO^dC]>cf3
+Z30 IXTbCMGb]Z20KBWe802@@d0
+Z31 ViUDb3<gQbCR0mK?Klkl533
+R3
+Z32 w1591343322
+R5
+R6
+L0 31
+R7
+r1
+31
+R12
+R8
+!i10b 1
+!s85 0
+Z33 !s108 1591343323.839000
+R11
+!s101 -O0
+vlab2_vlg_check_tst
+!i10b 1
+Z34 !s100 ?k7Ecbdb4h]b8YlfdGEW<1
+Z35 IR[a1EhFRNPN8AF8<CGV1@0
+Z36 VJBOIXFNSR?@J@7Z;bk:?63
+R3
+Z37 w1591343319
+Z38 8Waveform2.vwf.vt
+Z39 FWaveform2.vwf.vt
+L0 57
+R7
+r1
+!s85 0
+31
+Z40 !s108 1591343323.980000
+Z41 !s107 Waveform2.vwf.vt|
+Z42 !s90 -work|work|Waveform2.vwf.vt|
+!s101 -O0
+R8
+vlab2_vlg_sample_tst
+!i10b 1
+Z43 !s100 BiCFimE35YRjTRCAU`kQE1
+Z44 IHe:>[6]<G@D10@Vg`l12i1
+Z45 V?TNhHR6Rn^d0_aAE6XRi=2
+R3
+R37
+R38
+R39
+L0 29
+R7
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R8
+vlab2_vlg_vec_tst
+!i10b 1
+Z46 !s100 kB_bN[jA6c_BTKY@X@>H`2
+Z47 IATUO9zWJJPVMg[;WODXg60
+Z48 VmFb`6Bz@?ohPafIK4X^A30
+R3
+R37
+R38
+R39
+Z49 L0 393
+R7
+r1
+!s85 0
+31
+R40
+R41
+R42
+!s101 -O0
+R8

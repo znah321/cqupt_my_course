@@ -1,0 +1,28 @@
+# do experiment_15.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Count_S
+# 
+# Top level modules:
+# 	Count_S
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Count_S_vlg_sample_tst
+# -- Compiling module Count_S_vlg_check_tst
+# -- Compiling module Count_S_vlg_vec_tst
+# 
+# Top level modules:
+# 	Count_S_vlg_vec_tst
+# vsim -L cycloneiii_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -voptargs=\"+acc\" -t 1ps -novopt work.Count_S_vlg_vec_tst 
+# Loading work.Count_S_vlg_vec_tst
+# Loading work.Count_S
+# Loading cycloneiii_ver.cycloneiii_io_obuf
+# Loading cycloneiii_ver.cycloneiii_io_ibuf
+# Loading cycloneiii_ver.cycloneiii_lcell_comb
+# Loading altera_ver.dffeas
+# Loading work.Count_S_vlg_sample_tst
+# Loading work.Count_S_vlg_check_tst
+# Loading altera_ver.PRIM_GDFF_LOW
+# Simulation passed !
+# ** Note: $finish    : Waveform_Second_Count.vwf.vt(302)
+#    Time: 1 us  Iteration: 0  Instance: /Count_S_vlg_vec_tst/tb_out

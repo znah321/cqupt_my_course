@@ -1,0 +1,78 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 16 16 152 176)
+	(text "Timing_Module" (rect 5 0 123 17)(font "Arial" (font_size 9)))
+	(text "inst" (rect 8 141 31 156)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Input" (rect 0 0 33 16)(font "Arial" (font_size 8)))
+		(text "Input" (rect 21 27 54 43)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 136 32)
+		(output)
+		(text "S[3..0]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "S[3..0]" (rect 69 27 115 43)(font "Arial" (font_size 8)))
+		(line (pt 136 32)(pt 120 32)(line_width 3))
+	)
+	(port
+		(pt 136 48)
+		(output)
+		(text "S[7..4]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "S[7..4]" (rect 69 43 115 59)(font "Arial" (font_size 8)))
+		(line (pt 136 48)(pt 120 48)(line_width 3))
+	)
+	(port
+		(pt 136 64)
+		(output)
+		(text "M[3..0]" (rect 0 0 48 16)(font "Arial" (font_size 8)))
+		(text "M[3..0]" (rect 67 59 115 75)(font "Arial" (font_size 8)))
+		(line (pt 136 64)(pt 120 64)(line_width 3))
+	)
+	(port
+		(pt 136 80)
+		(output)
+		(text "M[7..4]" (rect 0 0 48 16)(font "Arial" (font_size 8)))
+		(text "M[7..4]" (rect 67 75 115 91)(font "Arial" (font_size 8)))
+		(line (pt 136 80)(pt 120 80)(line_width 3))
+	)
+	(port
+		(pt 136 96)
+		(output)
+		(text "H[3..0]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "H[3..0]" (rect 69 91 115 107)(font "Arial" (font_size 8)))
+		(line (pt 136 96)(pt 120 96)(line_width 3))
+	)
+	(port
+		(pt 136 112)
+		(output)
+		(text "H[7..4]" (rect 0 0 46 16)(font "Arial" (font_size 8)))
+		(text "H[7..4]" (rect 69 107 115 123)(font "Arial" (font_size 8)))
+		(line (pt 136 112)(pt 120 112)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 120 144))
+	)
+)

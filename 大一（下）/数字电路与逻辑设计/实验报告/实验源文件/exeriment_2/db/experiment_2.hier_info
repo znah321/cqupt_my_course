@@ -1,0 +1,9 @@
+|block1
+F <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+C => inst20.IN0
+B => inst20.IN1
+B => inst.IN0
+D => inst.IN1
+A => inst15.IN2
+
+

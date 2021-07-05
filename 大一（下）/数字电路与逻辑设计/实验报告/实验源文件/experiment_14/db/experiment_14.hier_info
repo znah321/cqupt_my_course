@@ -1,0 +1,44 @@
+|lab2
+seq[0] <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+seq[1] <= 7448:inst.OB
+seq[2] <= 7448:inst.OC
+seq[3] <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+seq[4] <= 7448:inst.OE
+seq[5] <= 7448:inst.OF
+seq[6] <= 7448:inst.OG
+A => 7448:inst.A
+A => inst2.IN0
+A => inst6.IN0
+C => 7448:inst.C
+C => inst1.IN3
+C => inst7.IN0
+D => 7448:inst.D
+D => inst3.IN0
+D => inst6.IN3
+B => 7448:inst.B
+B => inst1.IN0
+B => inst8.IN0
+
+
+|lab2|7448:inst
+OA <= 69.DB_MAX_OUTPUT_PORT_TYPE
+B => 27.IN0
+LTN => 27.IN1
+LTN => 25.IN1
+LTN => 29.IN1
+LTN => 13.IN5
+LTN => 38.IN3
+BIN => 37.IN0
+C => 25.IN0
+D => 14.IN0
+A => 29.IN0
+RBIN => 15.IN0
+OB <= 68.DB_MAX_OUTPUT_PORT_TYPE
+OC <= 70.DB_MAX_OUTPUT_PORT_TYPE
+OD <= 67.DB_MAX_OUTPUT_PORT_TYPE
+RBON <= 13.DB_MAX_OUTPUT_PORT_TYPE
+OE <= 71.DB_MAX_OUTPUT_PORT_TYPE
+OF <= 66.DB_MAX_OUTPUT_PORT_TYPE
+OG <= 72.DB_MAX_OUTPUT_PORT_TYPE
+
+

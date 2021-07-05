@@ -1,0 +1,13 @@
+vendor_name = ModelSim
+source_file = 1, D:/experiment_5/2mux.bdf
+source_file = 1, D:/experiment_5/3mux.bdf
+source_file = 1, D:/experiment_5/db/experiment_5.cbx.xml
+design_name = \3mux\
+instance = comp, \Y~output\, Y~output, \3mux\, 1
+instance = comp, \d1~input\, d1~input, \3mux\, 1
+instance = comp, \a0~input\, a0~input, \3mux\, 1
+instance = comp, \a1~input\, a1~input, \3mux\, 1
+instance = comp, \d0~input\, d0~input, \3mux\, 1
+instance = comp, \d2~input\, d2~input, \3mux\, 1
+instance = comp, \inst2|inst3~0\, inst2|inst3~0, \3mux\, 1
+instance = comp, \inst2|inst3~1\, inst2|inst3~1, \3mux\, 1
