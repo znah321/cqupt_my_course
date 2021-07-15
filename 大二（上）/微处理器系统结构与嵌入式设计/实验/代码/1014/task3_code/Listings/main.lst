@@ -1,0 +1,158 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/20/2020 23:38:07 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          typedef unsigned int uint;
+   5          typedef unsigned char uchar;
+   6          
+   7          #define LED P0
+   8          #define KEYMAT P1
+   9          sbit LA = P2^2;
+  10          sbit LB = P2^3;
+  11          sbit LC = P2^4;
+  12          
+  13          uint LED_CODE[13] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x76,0x06,0x40};
+  14          uint SEG_CODE[8][3] = {{1,1,1}, {1,1,0}, {1,0,1}, {1,0,0}, {0,1,1}, {0,1,0}, {0,0,1}, {0,0,0}};
+  15          uchar KeyPosition = -1;
+  16          uint NumberList[8] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  17          uchar count, i;
+  18          
+  19          void delay_10ms(uchar k); // Delay 10*k ms
+  20          void delay();
+  21          void get_KeyValue(); // Get the button's position
+  22          void dig_Display(uchar count); // Display LED
+  23          
+  24          void main()
+  25          {
+  26   1        count = 0;
+  27   1        while(1)
+  28   1        {
+  29   2          get_KeyValue();
+  30   2          dig_Display(count);
+  31   2          //ttt();
+  32   2          count++;
+  33   2        }
+  34   1      }
+  35          
+  36          void delay(uint j)
+  37          {
+  38   1        while(j-- > 0);
+  39   1      }
+  40          
+  41          void delay_10ms(uchar k)
+  42          // Function:Deay 10*i ms
+  43          {
+  44   1        uchar a, b;
+  45   1        for (;k>0;k--)
+  46   1        {
+  47   2          for (b=38;b>0;b--)
+  48   2          {
+  49   3            for (a=130;a>0;a--);
+  50   3          }         
+  51   2        }     
+  52   1      }
+  53          
+  54          void dig_Display(uchar count)
+C51 COMPILER V9.60.0.0   MAIN                                                              10/20/2020 23:38:07 PAGE 2   
+
+  55          {
+  56   1        uint c, temp, CONSIST_TIME, x;  
+  57   1        temp = count;
+  58   1        x = 1;
+  59   1        CONSIST_TIME = 25;
+  60   1        while(CONSIST_TIME-- > 0)
+  61   1        {
+  62   2          for(c = 0; c < 8 ; c++)
+  63   2          {
+  64   3            LC = SEG_CODE[c][0];LB = SEG_CODE[c][1];LA = SEG_CODE[c][2];
+  65   3            LED = NumberList[temp%8];
+  66   3            delay(100);
+  67   3            LED = 0x0;
+  68   3            temp++;
+  69   3          }
+  70   2        }
+  71   1      }
+  72          
+  73          void get_KeyValue()
+  74          {
+  75   1        // Get the key's row number
+  76   1        KEYMAT = 0x0f;
+  77   1        if (KEYMAT != 0x0f)
+  78   1        {
+  79   2          delay_10ms(1);
+  80   2          KEYMAT = 0x0f;
+  81   2          if(KEYMAT != 0x0f)
+  82   2          {
+  83   3            switch(KEYMAT)
+  84   3            {
+  85   4              // Row number
+  86   4              case 0x07:KeyPosition = 0;break;
+  87   4              case 0x0b:KeyPosition = 1;break;
+  88   4              case 0x0d:KeyPosition = 2;break;
+  89   4              case 0x0e:KeyPosition = 3;break;
+  90   4            }
+  91   3          }
+  92   2        }
+  93   1        
+  94   1        // Get the key's column number
+  95   1        KEYMAT = 0xf0;
+  96   1        if (KEYMAT != 0xf0)
+  97   1        {
+  98   2          delay_10ms(1);
+  99   2          KEYMAT = 0xf0;
+ 100   2          if (KEYMAT != 0xf0)
+ 101   2          {
+ 102   3            switch(KEYMAT)
+ 103   3            {
+ 104   4              case 0x70:KeyPosition = KeyPosition;while(KEYMAT == 0x70);break;
+ 105   4              case 0xb0:KeyPosition = KeyPosition + 4;while(KEYMAT == 0xb0);break;
+ 106   4              case 0xd0:KeyPosition = KeyPosition + 8;while(KEYMAT == 0xd0);break;
+ 107   4              case 0xe0:KeyPosition = KeyPosition + 12;while(KEYMAT == 0xe0);break;
+ 108   4            }
+ 109   3            // Change the NumberList
+ 110   3            i = 0;
+ 111   3            while(1)
+ 112   3            {
+ 113   4              if (NumberList[i] != 0x0) i++;
+ 114   4              else  break;
+ 115   4            }
+ 116   3            NumberList[i] = LED_CODE[KeyPosition];
+C51 COMPILER V9.60.0.0   MAIN                                                              10/20/2020 23:38:07 PAGE 3   
+
+ 117   3          }
+ 118   2        }
+ 119   1      }
+ 120          void ttt()
+ 121          {
+ 122   1        uchar j = 10;
+ 123   1        for(i = 0; i < 8; i++)
+ 124   1        {
+ 125   2          LA = SEG_CODE[i][2];LB = SEG_CODE[i][1];LC = SEG_CODE[i][0];
+ 126   2          LED = NumberList[i];
+ 127   2          while(j-- > 0);
+ 128   2          LED = 0x0;
+ 129   2        }
+ 130   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    520    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     93       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

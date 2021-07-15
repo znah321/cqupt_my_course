@@ -1,0 +1,376 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          typedef unsigned int uint;
+   4          typedef unsigned char uchar;
+   5          
+   6          #define KEYMAT P1
+   7          #define DATA P0
+   8          uchar KeyValue;
+   9          uchar KeyState;
+  10          uchar NUMBERS[] = "0123456789 ";
+  11          sbit LA = P2^2;
+  12          sbit LB = P2^3;
+  13          sbit LC = P2^4;
+  14          sbit K1 = P3^1; // Set Clock Time
+  15          sbit K2 = P3^0; // Backspace
+  16          sbit K3 = P3^2; // Confirm
+  17          sbit K4 = P3^3; // Cancel the Clock
+  18          sbit E = P2^7;
+  19          sbit RW = P2^5;
+  20          sbit RS = P2^6;
+  21          sbit BUZZER = P1^5; // Clock
+  22          uint INSTANT_TIME[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  23          uint CLOCK_TIME[8] = {10, 10, 0, 10, 10, 0, 10, 10};
+  24          uint Second_T = 2000;
+  25          uint Second_Count = 0;
+  26          uint Temp = 0;
+  27          uchar Clock_Mode_State = 0;
+  28          uchar Confirm_State = 0;
+  29          uchar Clock_On_Running = 0;
+  30          uint c = 0;
+  31          uchar FLAG = 0;
+  32          sbit t = P2^0;
+  33          
+  34          void delay_1ms(uint c);
+  35          void delay_10ms();
+  36          void MatrixKeyDown();
+  37          void DigDisplay(uint TIME_CODE[8]);
+  38          void GetKeyValue();
+  39          void Backspace();
+  40          void ClockWarning();
+  41          void Init_LCD1602();
+  42          void write_Data(uchar DAT);
+  43          void write_Command(uchar COMMAND);
+  44          void check_Busy();
+  45          void LCD1602_DisplayInstantTime();
+  46          void LCD1602_SetClockTime();
+  47          
+  48          void main()
+  49          {
+  50   1        TMOD = 0x10;
+  51   1        TH1 = (65536 - 500) / 256;
+  52   1        TL1 = (65536 - 500) % 256;
+  53   1        
+  54   1        EA = 1;
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 2   
+
+  55   1        ET1 = 1;
+  56   1        TR1 = 1;
+  57   1        
+  58   1        EX1 = 1;
+  59   1        IT1 = 1;
+  60   1        PX1 = 1;
+  61   1        Init_LCD1602();
+  62   1        
+  63   1        while(1)
+  64   1        {
+  65   2          GetKeyValue();
+  66   2          if (!Clock_Mode_State)
+  67   2            LCD1602_DisplayInstantTime();
+  68   2          else
+  69   2          {
+  70   3            LCD1602_DisplayInstantTime();
+  71   3            LCD1602_SetClockTime();
+  72   3          }
+  73   2          MatrixKeyDown();
+  74   2          if (KeyState && Clock_Mode_State)
+  75   2          {
+  76   3            KeyState = 0;
+  77   3            CLOCK_TIME[c] = KeyValue;
+  78   3            if (c < 8)
+  79   3              c++;
+  80   3            if (c == 2 || c == 5)
+  81   3              c++;
+  82   3          }
+  83   2          if (c == 8 && Confirm_State)
+  84   2          {
+  85   3            c = 0;
+  86   3            Confirm_State = 0;
+  87   3            Clock_On_Running = 1;
+  88   3            write_Command(0xcf);
+  89   3            write_Data(0x40);
+  90   3          }
+  91   2          if (Clock_On_Running)
+  92   2            ClockWarning();
+  93   2        }
+  94   1      }
+  95          
+  96          void delay_1ms(uint c)
+  97          {
+  98   1        uchar a, b;
+  99   1        for (; c > 0; c --)
+ 100   1           for (b = 199; b > 0; b--)
+ 101   1              for(a = 1; a > 0; a--);
+ 102   1      }
+ 103          
+ 104          void delay_10ms()
+ 105          {
+ 106   1        uchar a,b,c;
+ 107   1        for(c=1;c>0;c--)
+ 108   1          for(b=38;b>0;b--)
+ 109   1            for(a=130;a>0;a--);   
+ 110   1      }
+ 111          
+ 112          void MatrixKeyDown()
+ 113          {
+ 114   1        char a;
+ 115   1        KEYMAT = 0x0f;
+ 116   1        if(KEYMAT != 0x0f)
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 3   
+
+ 117   1        {
+ 118   2          delay_1ms(1);
+ 119   2          if(KEYMAT != 0x0f)
+ 120   2          {
+ 121   3            KeyState = 1;
+ 122   3            KEYMAT = 0X0F;
+ 123   3            switch(KEYMAT)
+ 124   3            {
+ 125   4              case(0X07): KeyValue = 0;break;
+ 126   4              case(0X0b): KeyValue = 1;break;
+ 127   4              case(0X0d): KeyValue = 2;break;
+ 128   4              case(0X0e): KeyValue = 3;break;
+ 129   4            }
+ 130   3            KEYMAT = 0XF0;
+ 131   3            delay_1ms(1);
+ 132   3            switch(KEYMAT)
+ 133   3            {
+ 134   4              case(0X70): KeyValue = KeyValue;break;
+ 135   4              case(0Xb0): KeyValue = KeyValue+4;break;
+ 136   4              case(0Xd0): KeyValue = KeyValue+8;break;
+ 137   4              case(0Xe0): KeyValue = KeyValue+12;break;
+ 138   4            }
+ 139   3            while((a < 50)&&(KEYMAT != 0xf0))
+ 140   3            {
+ 141   4              delay_1ms(1);
+ 142   4              a++;
+ 143   4            }
+ 144   3            a = 0;
+ 145   3          }
+ 146   2        }
+ 147   1      }
+ 148          
+ 149          void GetKeyValue()
+ 150          {
+ 151   1        if(K1 == 0)
+ 152   1        {
+ 153   2          delay_10ms();
+ 154   2          if (K1 == 0)
+ 155   2          {
+ 156   3            Clock_Mode_State = 1;
+ 157   3            while(!K1);
+ 158   3          }
+ 159   2        }
+ 160   1        
+ 161   1        if(K2 == 0)
+ 162   1        {
+ 163   2          delay_10ms();
+ 164   2          if (K2 == 0)
+ 165   2          {
+ 166   3            Backspace();
+ 167   3            while(!K2);
+ 168   3          }
+ 169   2        }
+ 170   1        
+ 171   1        if(K3 == 0)
+ 172   1        {
+ 173   2          delay_10ms();
+ 174   2          if (K3 == 0)
+ 175   2          {
+ 176   3            Confirm_State = 1;
+ 177   3            while(!K3);
+ 178   3          }
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 4   
+
+ 179   2        }
+ 180   1      }
+ 181          
+ 182          void Backspace()
+ 183          {
+ 184   1        c--;
+ 185   1        if (c == 2 || c == 5)
+ 186   1          c--;
+ 187   1        CLOCK_TIME[c] = 10;
+ 188   1      }
+ 189          
+ 190          void Timer1_int() interrupt 3
+ 191          {
+ 192   1        uint t, H, M, S;
+ 193   1        
+ 194   1        TH1 = (65536 - 500) / 256;
+ 195   1        TL1 = (65536 - 500) % 256;
+ 196   1        t = Second_Count;
+ 197   1        Temp++;
+ 198   1        if (Temp == Second_T)
+ 199   1        {
+ 200   2          Second_Count++;
+ 201   2          Temp = 0;
+ 202   2          
+ 203   2          // Update the time
+ 204   2          H = t/3600;
+ 205   2          M = (t%3600)/60;
+ 206   2          S = t%3600%60;
+ 207   2          
+ 208   2          INSTANT_TIME[0] = H/10;
+ 209   2          INSTANT_TIME[1] = H%10;
+ 210   2          
+ 211   2          INSTANT_TIME[3] = M/10;
+ 212   2          INSTANT_TIME[4] = M%10;
+ 213   2          
+ 214   2          INSTANT_TIME[6] = S/10;
+ 215   2          INSTANT_TIME[7] = S%10;
+ 216   2        }
+ 217   1        
+ 218   1        if (FLAG && Clock_On_Running)
+ 219   1          BUZZER = ~BUZZER;
+ 220   1      }
+ 221          
+ 222          void ClockWarning()
+ 223          {
+ 224   1        uchar i;
+ 225   1        for(i = 0; i < 8;  i++)
+ 226   1        {
+ 227   2          if (INSTANT_TIME[i] != CLOCK_TIME[i])
+ 228   2          {
+ 229   3            return;
+ 230   3          }
+ 231   2        }
+ 232   1        FLAG = 1;
+ 233   1        t = 0;
+ 234   1      }
+ 235          
+ 236          void check_Busy()
+ 237          {
+ 238   1        uchar STATUS;
+ 239   1        do
+ 240   1        {
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 5   
+
+ 241   2          STATUS = 0xff;
+ 242   2          E = 0;
+ 243   2          RS = 0;
+ 244   2          RW = 1;
+ 245   2          E = 1;
+ 246   2          STATUS = DATA;
+ 247   2        }while(STATUS & 0x80);
+ 248   1        E = 0;
+ 249   1      }
+ 250          
+ 251          void write_Command(uchar COMMAND)
+ 252          {
+ 253   1        check_Busy();
+ 254   1        E = 0;
+ 255   1        RS = 0;
+ 256   1        RW = 0;
+ 257   1        DATA = COMMAND;
+ 258   1        E = 1;
+ 259   1        delay_1ms(1);
+ 260   1        E = 0;
+ 261   1      }
+ 262          
+ 263          void write_Data(uchar DAT)
+ 264          {
+ 265   1        check_Busy();
+ 266   1        E = 0;
+ 267   1        RS = 1;
+ 268   1        RW = 0;
+ 269   1        DATA = DAT;
+ 270   1        E = 1;
+ 271   1        delay_1ms(1);
+ 272   1        E = 0;
+ 273   1      }
+ 274          
+ 275          void Init_LCD1602()
+ 276          {
+ 277   1        write_Command(0x38);
+ 278   1        write_Command(0x0c);
+ 279   1        write_Command(0x06);
+ 280   1        write_Command(0x01);
+ 281   1      }
+ 282          
+ 283          void LCD1602_DisplayInstantTime()
+ 284          {
+ 285   1        uchar x;
+ 286   1        write_Command(0x80);
+ 287   1        write_Data(0x54);
+ 288   1        write_Data(0x69);
+ 289   1        write_Data(0x6d);
+ 290   1        write_Data(0x65);
+ 291   1        write_Data(0x3a);
+ 292   1        write_Data(0x20);
+ 293   1        for(x = 0; x < 8; x++)
+ 294   1        {
+ 295   2          if (x == 2 || x == 5)
+ 296   2          {
+ 297   3            write_Data(0x2d);
+ 298   3            continue;
+ 299   3          }
+ 300   2          write_Data(NUMBERS[INSTANT_TIME[x]]);
+ 301   2        }
+ 302   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              12/12/2020 20:44:10 PAGE 6   
+
+ 303          
+ 304          void LCD1602_SetClockTime()
+ 305          {
+ 306   1        uchar x;
+ 307   1        write_Command(0xc0);
+ 308   1        write_Data(0x43);
+ 309   1        write_Data(0x6c);
+ 310   1        write_Data(0x6f);
+ 311   1        write_Data(0x63);
+ 312   1        write_Data(0x6b);
+ 313   1        write_Data(0x3a);
+ 314   1        for(x = 0; x < 8; x++)
+ 315   1        {
+ 316   2          if (x == 2 || x == 5)
+ 317   2          {
+ 318   3            write_Data(0x2d);
+ 319   3            continue;
+ 320   3          }
+ 321   2          write_Data(NUMBERS[CLOCK_TIME[x]]);
+ 322   2        }
+ 323   1      }
+ 324          
+ 325          void int1_isr(void) interrupt 2
+ 326          {
+ 327   1        uchar i;
+ 328   1        if (FLAG)
+ 329   1        {
+ 330   2          FLAG = 0;
+ 331   2          Clock_Mode_State = 0;
+ 332   2          write_Command(0xcf);
+ 333   2          write_Data(0x20);
+ 334   2          write_Command(0x01);
+ 335   2          for(i = 0; i < 8; i++)
+ 336   2          {
+ 337   3            if (c != 2 && c != 5)
+ 338   3              CLOCK_TIME[i] = 10;
+ 339   3          }
+ 340   2          t = 1;
+ 341   2        }
+ 342   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1142    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     58       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

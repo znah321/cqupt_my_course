@@ -1,0 +1,161 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              11/06/2020 21:49:48 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          typedef unsigned int uint;
+   5          typedef unsigned char uchar;
+   6          
+   7          #define DATA P0
+   8          #define GPIO_KEY P1
+   9          
+  10          sbit E = P2^7;
+  11          sbit RW = P2^5;
+  12          sbit RS = P2^6;
+  13          uchar NUMBERS[] = "0123456789";
+  14          unsigned char KeyValue;
+  15          unsigned char KeyState;
+  16          
+  17          void delay_1ms(uint c)
+  18          {
+  19   1        uchar a, b;
+  20   1        for (; c > 0; c --)
+  21   1           for (b = 199; b > 0; b--)
+  22   1              for(a = 1; a > 0; a--);
+  23   1      }
+  24          
+  25          void delay_10ms()
+  26          {
+  27   1        uchar a,b,c;
+  28   1        for(c=1;c>0;c--)
+  29   1          for(b=38;b>0;b--)
+  30   1            for(a=130;a>0;a--);   
+  31   1      }
+  32          
+  33          void check_Busy()
+  34          {
+  35   1        uchar STATUS;
+  36   1        do
+  37   1        {
+  38   2          STATUS = 0xff;
+  39   2          E = 0;
+  40   2          RS = 0;
+  41   2          RW = 1;
+  42   2          E = 1;
+  43   2          STATUS = DATA;
+  44   2        }while(STATUS & 0x80);
+  45   1        E = 0;
+  46   1      }
+  47          
+  48          void write_Command(uchar COMMAND)
+  49          {
+  50   1        check_Busy();
+  51   1        E = 0;
+  52   1        RS = 0;
+  53   1        RW = 0;
+  54   1        DATA = COMMAND;
+C51 COMPILER V9.60.0.0   MAIN                                                              11/06/2020 21:49:48 PAGE 2   
+
+  55   1        delay_1ms(1);
+  56   1        E = 1;
+  57   1        delay_1ms(5);
+  58   1        E = 0;
+  59   1      }
+  60          
+  61          void write_Data(uchar DAT)
+  62          {
+  63   1        check_Busy();
+  64   1        E = 0;
+  65   1        RS = 1;
+  66   1        RW = 0;
+  67   1        DATA = DAT;
+  68   1        delay_1ms(1);
+  69   1        E = 1;
+  70   1        delay_1ms(5);
+  71   1        E = 0;
+  72   1      }
+  73          
+  74          void KeyDown(void)
+  75          {
+  76   1        char a;
+  77   1        GPIO_KEY=0x0f;
+  78   1        if(GPIO_KEY!=0x0f)
+  79   1        {
+  80   2          delay_10ms();
+  81   2          if(GPIO_KEY!=0x0f)
+  82   2          {
+  83   3            KeyState=1;
+  84   3            GPIO_KEY=0X0F;
+  85   3            switch(GPIO_KEY)
+  86   3            {
+  87   4              case(0X07): KeyValue=0;break;
+  88   4              case(0X0b): KeyValue=1;break;
+  89   4              case(0X0d): KeyValue=2;break;
+  90   4              case(0X0e): KeyValue=3;break;
+  91   4            }
+  92   3            GPIO_KEY=0XF0;
+  93   3            delay_10ms();
+  94   3            switch(GPIO_KEY)
+  95   3            {
+  96   4              case(0X70): KeyValue=KeyValue;break;
+  97   4              case(0Xb0): KeyValue=KeyValue+4;break;
+  98   4              case(0Xd0): KeyValue=KeyValue+8;break;
+  99   4              case(0Xe0): KeyValue=KeyValue+12;break;
+ 100   4            }
+ 101   3            while((a<50)&&(GPIO_KEY!=0xf0))
+ 102   3            {
+ 103   4              delay_10ms();
+ 104   4              a++;
+ 105   4            }
+ 106   3            a=0;
+ 107   3          }
+ 108   2        }
+ 109   1      }
+ 110          
+ 111          void Init_LCD1602()
+ 112          {
+ 113   1        write_Command(0x38);
+ 114   1        write_Command(0x0c);
+ 115   1        write_Command(0x06);
+ 116   1        write_Command(0x01);
+C51 COMPILER V9.60.0.0   MAIN                                                              11/06/2020 21:49:48 PAGE 3   
+
+ 117   1        write_Command(0x84);
+ 118   1      }
+ 119          
+ 120          void main()
+ 121          {
+ 122   1        Init_LCD1602();
+ 123   1        while(1)
+ 124   1        {
+ 125   2          KeyDown();
+ 126   2          if (KeyState)
+ 127   2          {
+ 128   3            KeyState = 0;
+ 129   3            write_Data(NUMBERS[KeyValue]);
+ 130   3            delay_1ms(1);
+ 131   3          }
+ 132   2        }
+ 133   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    354    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

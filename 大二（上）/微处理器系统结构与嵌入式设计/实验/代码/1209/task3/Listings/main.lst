@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/16/2020 17:00:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          typedef unsigned int uint;
+   4          typedef unsigned char uchar;
+   5          uchar message[] = "wei_xin 2019210258\r\n";
+   6          uchar i = 0;
+   7          
+   8          void main()
+   9          {
+  10   1        TMOD = 0x20;
+  11   1        TH1 = 0xf3;
+  12   1        TH1 = 0xf3;
+  13   1        SCON = 0x50;
+  14   1        PCON = 0x00;  
+  15   1        TR1 = 1;
+  16   1      
+  17   1        while(1)
+  18   1        {
+  19   2          for(; message[i] != '\0'; i++)
+  20   2          {
+  21   3            SBUF = message[i];
+  22   3            while(TI == 0);
+  23   3            TI = 0;
+  24   3          }
+  25   2          i = 0;
+  26   2        }
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     41    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     22    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

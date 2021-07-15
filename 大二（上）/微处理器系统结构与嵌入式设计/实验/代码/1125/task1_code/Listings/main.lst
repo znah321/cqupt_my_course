@@ -1,0 +1,245 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/19/2020 22:08:02 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include"temp.h"  
+   3          
+   4          typedef unsigned int u16;
+   5          typedef unsigned char u8;
+   6          
+   7          sbit BUZZER = P1^5;
+   8          sbit LSA=P2^2;
+   9          sbit LSB=P2^3;
+  10          sbit LSC=P2^4;
+  11          char num=0;
+  12          u8 DisplayData[8];
+  13          u8 code smgduan[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  14          float tp;
+  15          float tpn = 0;
+  16          uchar flag = 0;
+  17          uint ctime = 10;
+  18          
+  19          void delay(u16 i);
+  20          void datapros(int temp);
+  21          void DigDisplay();
+  22          void Delay1ms(uint y);
+  23          uchar Ds18b20Init();
+  24          void Ds18b20WriteByte(uchar dat);
+  25          uchar Ds18b20ReadByte();
+  26          void  Ds18b20ChangTemp();
+  27          void  Ds18b20ReadTempCom();
+  28          int Ds18b20ReadTemp();
+  29          
+  30          void main()
+  31          {
+  32   1        TMOD = 0x12;
+  33   1        
+  34   1        EA = 0;
+  35   1        ET0 = 1;
+  36   1        
+  37   1        TH0 = 0x9c;
+  38   1        TL0 = 0x9c;
+  39   1        
+  40   1        
+  41   1        while(1)
+  42   1        {
+  43   2          datapros(Ds18b20ReadTemp());
+  44   2          DigDisplay();
+  45   2          if (flag == 1)
+  46   2          {
+  47   3            while(ctime-- > 0)
+  48   3            {
+  49   4              BUZZER = ~BUZZER;
+  50   4              delay(5);
+  51   4            }
+  52   3          }
+  53   2          ctime = 10;
+  54   2        }   
+C51 COMPILER V9.60.0.0   MAIN                                                              12/19/2020 22:08:02 PAGE 2   
+
+  55   1      }
+  56          
+  57          void delay(u16 i)
+  58          {
+  59   1        while(i--); 
+  60   1      }
+  61          
+  62          void datapros(int temp)    
+  63          {
+  64   1        if(temp< 0)
+  65   1        {
+  66   2          DisplayData[0] = 0x40;
+  67   2          temp = temp-1;
+  68   2          temp =~ temp;
+  69   2          tp = temp;
+  70   2          temp = tp*0.0625*100+0.5; 
+  71   2        }
+  72   1        else
+  73   1        {     
+  74   2          DisplayData[0] = 0x00;
+  75   2          tp = temp;
+  76   2          temp = tp*0.0625*100+0.5; 
+  77   2        }
+  78   1        
+  79   1        DisplayData[1] = smgduan[temp / 10000];
+  80   1        DisplayData[2] = smgduan[temp % 10000 / 1000];
+  81   1        DisplayData[3] = smgduan[temp % 1000 / 100] | 0x80;
+  82   1        DisplayData[4] = smgduan[temp % 100 / 10];
+  83   1        DisplayData[5] = smgduan[temp % 10];
+  84   1        
+  85   1        tpn = temp % 10000 / 1000 *1000 + temp % 1000 / 100 * 100 +  temp % 100 / 10 * 10 + temp % 10 ;
+  86   1        if (tpn > 1400)
+  87   1          flag = 1;
+  88   1        else
+  89   1          flag = 0;
+  90   1      }
+  91          
+  92          void DigDisplay()
+  93          {
+  94   1        u8 i;
+  95   1        for(i=0;i<6;i++)
+  96   1        {
+  97   2          switch(i)
+  98   2          {
+  99   3            case(0):
+ 100   3              LSA=0;LSB=0;LSC=0; break;
+ 101   3            case(1):
+ 102   3              LSA=1;LSB=0;LSC=0; break;
+ 103   3            case(2):
+ 104   3              LSA=0;LSB=1;LSC=0; break;
+ 105   3            case(3):
+ 106   3              LSA=1;LSB=1;LSC=0; break;
+ 107   3            case(4):
+ 108   3              LSA=0;LSB=0;LSC=1; break;
+ 109   3            case(5):
+ 110   3              LSA=1;LSB=0;LSC=1; break;
+ 111   3          }
+ 112   2          P0=DisplayData[3];
+ 113   2          delay(100); 
+ 114   2          P0=0x00;
+ 115   2        }   
+ 116   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              12/19/2020 22:08:02 PAGE 3   
+
+ 117          
+ 118          void Delay1ms(uint y)
+ 119          {
+ 120   1        uint x;
+ 121   1        for( ; y>0; y--)
+ 122   1        {
+ 123   2          for(x=110; x>0; x--);
+ 124   2        }
+ 125   1      }
+ 126          
+ 127          uchar Ds18b20Init()
+ 128          {
+ 129   1        uchar i;
+ 130   1        DSPORT = 0;      //将总线拉低480us~960us
+ 131   1        i = 70; 
+ 132   1        while(i--);//延时642us
+ 133   1        DSPORT = 1;     //然后拉高总线，如果DS18B20做出反应会将在15us~60us后总线拉低
+ 134   1        i = 0;
+ 135   1        while(DSPORT) //等待DS18B20拉低总线
+ 136   1        {
+ 137   2          Delay1ms(1);
+ 138   2          i++;
+ 139   2          if(i>5)//等待>5MS
+ 140   2          {
+ 141   3            return 0;//初始化失败
+ 142   3          }
+ 143   2        
+ 144   2        }
+ 145   1        return 1;//初始化成功
+ 146   1      }
+ 147          
+ 148          void Ds18b20WriteByte(uchar dat)
+ 149          {
+ 150   1        uint i, j;
+ 151   1      
+ 152   1        for(j=0; j<8; j++)
+ 153   1        {
+ 154   2          DSPORT = 0;         //每写入一位数据之前先把总线拉低1us
+ 155   2          i++;
+ 156   2          DSPORT = dat & 0x01;  //然后写入一个数据，从最低位开始
+ 157   2          i=6;
+ 158   2          while(i--); //延时68us，持续时间最少60us
+ 159   2          DSPORT = 1; //然后释放总线，至少1us给总线恢复时间才能接着写入第二个数值
+ 160   2          dat >>= 1;
+ 161   2        }
+ 162   1      }
+ 163          
+ 164          uchar Ds18b20ReadByte()
+ 165          {
+ 166   1        uchar byte, bi;
+ 167   1        uint i, j;  
+ 168   1        for(j=8; j>0; j--)
+ 169   1        {
+ 170   2          DSPORT = 0;//先将总线拉低1us
+ 171   2          i++;
+ 172   2          DSPORT = 1;//然后释放总线
+ 173   2          i++;
+ 174   2          i++;//延时6us等待数据稳定
+ 175   2          bi = DSPORT;   //读取数据，从最低位开始读取
+ 176   2          /*将byte左移一位，然后与上右移7位后的bi，注意移动之后移掉那位补0。*/
+ 177   2          byte = (byte >> 1) | (bi << 7);             
+ 178   2          i = 4;    //读取完之后等待48us再接着读取下一个数
+C51 COMPILER V9.60.0.0   MAIN                                                              12/19/2020 22:08:02 PAGE 4   
+
+ 179   2          while(i--);
+ 180   2        }       
+ 181   1        return byte;
+ 182   1      }
+ 183          
+ 184          void  Ds18b20ChangTemp()
+ 185          {
+ 186   1        Ds18b20Init();
+ 187   1        Delay1ms(1);
+ 188   1        Ds18b20WriteByte(0xcc);   //跳过ROM操作命令    
+ 189   1        Ds18b20WriteByte(0x44);     //温度转换命令
+ 190   1        //Delay1ms(100);  //等待转换成功，而如果你是一直刷着的话，就不用这个延时了
+ 191   1         
+ 192   1      }
+ 193          
+ 194          void  Ds18b20ReadTempCom()
+ 195          { 
+ 196   1      
+ 197   1        Ds18b20Init();
+ 198   1        Delay1ms(1);
+ 199   1        Ds18b20WriteByte(0xcc);  //跳过ROM操作命令
+ 200   1        Ds18b20WriteByte(0xbe);  //发送读取温度命令
+ 201   1      }
+ 202          
+ 203          int Ds18b20ReadTemp()
+ 204          {
+ 205   1        int temp = 0;
+ 206   1        uchar tmh, tml;
+ 207   1        Ds18b20ChangTemp();       //先写入转换命令
+ 208   1        Ds18b20ReadTempCom();     //然后等待转换完后发送读取温度命令
+ 209   1        tml = Ds18b20ReadByte();    //读取温度值共16位，先读低字节
+ 210   1        tmh = Ds18b20ReadByte();    //再读高字节
+ 211   1        temp = tmh;
+ 212   1        temp <<= 8;
+ 213   1        temp |= tml;
+ 214   1        return temp;
+ 215   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    794    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     20       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

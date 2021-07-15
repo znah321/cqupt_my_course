@@ -1,0 +1,6 @@
+"main.obj",
+"temp.obj",
+"i2c.obj",
+"XPT2046.obj" 
+TO "template111" 
+RAMSIZE(256) 

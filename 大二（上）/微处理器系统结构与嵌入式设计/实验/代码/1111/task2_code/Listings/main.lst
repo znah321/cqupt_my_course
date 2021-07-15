@@ -1,0 +1,61 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/17/2020 23:27:35 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          typedef unsigned int uint;
+   5          typedef unsigned char uchar;
+   6          
+   7          sbit P1_0 = P1^0;
+   8          uchar count = 0;
+   9          uchar T = 4;
+  10          uchar HIGH = 3;
+  11          
+  12          
+  13          void main()
+  14          {
+  15   1        TMOD = 0x12;
+  16   1        TR0 = 1;
+  17   1        
+  18   1        EA = 1;
+  19   1        ET0 = 1;
+  20   1        TR0 = 1;
+  21   1        
+  22   1        TH0 = 0x9c;
+  23   1        TL0 = 0x9c;
+  24   1        while(1);
+  25   1      }
+  26          
+  27          void timer0_int() interrupt 1
+  28          {
+  29   1        count++;
+  30   1        if (count == HIGH)
+  31   1          P1_0 = 1;
+  32   1        if (count == T)
+  33   1        {
+  34   2          count = 0;
+  35   2          P1_0 = 0;
+  36   2        }
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     47    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

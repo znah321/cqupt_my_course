@@ -1,0 +1,80 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              11/18/2020 17:00:22 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          typedef unsigned int uint;
+   5          typedef unsigned char uchar;
+   6          
+   7          sbit LED_1 = P2^7;
+   8          sbit LED_2 = P2^0;
+   9          
+  10          uint T_1 = 10000;
+  11          uint T_2 = 50000;
+  12          count1 = 0;
+  13          count2 = 0;
+  14          
+  15          void main()
+  16          {
+  17   1        TMOD = 0x03;
+  18   1        EA = 1;
+  19   1        ET0 = 1;
+  20   1        
+  21   1        TR0 = 1;
+  22   1        TR1 = 1;
+  23   1        
+  24   1        TH0 = 0x9c;
+  25   1        TL0 = 0x9c;
+  26   1        
+  27   1        while(1);
+  28   1      }
+  29          
+  30          void T0_int() interrupt 1
+  31          {
+  32   1        TH0 = 0x9c;
+  33   1        TL0 = 0x9c;
+  34   1      
+  35   1        // LED_1
+  36   1        if (count1 <= T_1)
+  37   1          count1++;
+  38   1        else
+  39   1        {
+  40   2          LED_1 = ~LED_1;
+  41   2          TR1= 0;
+  42   2        }
+  43   1        
+  44   1        // LED_2
+  45   1        if (count2 <= T_2)
+  46   1          count2++;
+  47   1        else
+  48   1        {
+  49   2          LED_2 = ~LED_2;
+  50   2          TR1 = 1;
+  51   2          count1 = 0;
+  52   2          count2 = 0;
+  53   2        }
+  54   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              11/18/2020 17:00:22 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     96    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

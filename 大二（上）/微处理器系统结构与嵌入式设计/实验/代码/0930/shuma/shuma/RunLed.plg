@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+E:\教学文档\2014年02月\嵌入式课程\微处理器结构\实验\实验一实验任务二\Keil\RunLed.uv2
+Project File Date:  07/26/2007
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling my.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=55
+creating hex file from "RunLed"...
+"RunLed" - 0 Error(s), 0 Warning(s).

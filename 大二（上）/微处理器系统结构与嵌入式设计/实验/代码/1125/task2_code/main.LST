@@ -1,0 +1,154 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/08/2020 18:31:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /**************************************************************************************
+   2          *                 DS1302时钟实验                          *
+   3          实现现象：下载程序后，数码管显示时钟数据
+   4          注意事项：                                          
+   5          ***************************************************************************************/
+   6          
+   7          #include "reg52.h"       //此文件中定义了单片机的一些特殊功能寄存器
+   8          #include"ds1302.h"  
+   9          
+  10          typedef unsigned int u16;   //对数据类型进行声明定义
+  11          typedef unsigned char u8;
+  12          
+  13          sbit LSA=P2^2;
+  14          sbit LSB=P2^3;
+  15          sbit LSC=P2^4;
+  16          sbit buzz = P1^5;
+  17          
+  18          char num=0;
+  19          u8 DisplayData[8];
+  20          u8 code smgduan[11]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x40};
+  21          u8 code clock[8] = {1,0,10,1,5,10,3,0};
+  22          u8 flag = 0;
+  23          u8 c;
+  24          u16 ctime = 10;
+  25          
+  26          /*******************************************************************************
+  27          * 函 数 名         : delay
+  28          * 函数功能       : 延时函数，i=1时，大约延时10us
+  29          *******************************************************************************/
+  30          void delay(u16 i)
+  31          {
+  32   1        while(i--); 
+  33   1      }
+  34          
+  35          
+  36          /*******************************************************************************
+  37          * 函 数 名         : datapros()
+  38          * 函数功能       : 时间读取处理转换函数
+  39          * 输    入         : 无
+  40          * 输    出         : 无
+  41          *******************************************************************************/
+  42          
+  43          void datapros()    
+  44          {
+  45   1          Ds1302ReadTime();
+  46   1        DisplayData[0] = TIME[2]/16;        //时
+  47   1        DisplayData[1] = TIME[2]&0x0f;         
+  48   1        DisplayData[2] = 10;
+  49   1        DisplayData[3] = TIME[1]/16;        //分
+  50   1        DisplayData[4] = TIME[1]&0x0f;  
+  51   1        DisplayData[5] = 10;
+  52   1        DisplayData[6] = TIME[0]/16;        //秒
+  53   1        DisplayData[7] = TIME[0]&0x0f;
+  54   1        
+  55   1        if (flag == 1 && DisplayData[7] == clock[7] + 2)
+C51 COMPILER V9.60.0.0   MAIN                                                              12/08/2020 18:31:05 PAGE 2   
+
+  56   1            flag = 0;
+  57   1        
+  58   1        for(c = 0; c < 8; c++)
+  59   1        {
+  60   2          if (DisplayData[c] != clock[c])
+  61   2            return;
+  62   2        }
+  63   1        flag = 1;
+  64   1      }
+  65          
+  66          
+  67          /*******************************************************************************
+  68          * 函数名         :DigDisplay()
+  69          * 函数功能     :数码管显示函数
+  70          * 输入           : 无
+  71          * 输出           : 无
+  72          *******************************************************************************/
+  73          void DigDisplay()
+  74          {
+  75   1        u8 i;
+  76   1        for(i=0;i<8;i++)
+  77   1        {
+  78   2          switch(i)  //位选，选择点亮的数码管，
+  79   2          {
+  80   3            case(0):
+  81   3              LSA=0;LSB=0;LSC=0; break;//显示第0位
+  82   3            case(1):
+  83   3              LSA=1;LSB=0;LSC=0; break;//显示第1位
+  84   3            case(2):
+  85   3              LSA=0;LSB=1;LSC=0; break;//显示第2位
+  86   3            case(3):
+  87   3              LSA=1;LSB=1;LSC=0; break;//显示第3位
+  88   3            case(4):
+  89   3              LSA=0;LSB=0;LSC=1; break;//显示第4位
+  90   3            case(5):
+  91   3              LSA=1;LSB=0;LSC=1; break;//显示第5位
+  92   3            case(6):
+  93   3              LSA=0;LSB=1;LSC=1; break;//显示第6位
+  94   3            case(7):
+  95   3              LSA=1;LSB=1;LSC=1; break;//显示第7位  
+  96   3          }
+  97   2          P0=smgduan[DisplayData[7-i]];//发送数据
+  98   2          delay(100); //间隔一段时间扫描  
+  99   2          P0=0x00;//消隐
+ 100   2        }   
+ 101   1      }
+ 102          
+ 103          /*******************************************************************************
+ 104          * 函 数 名       : main
+ 105          * 函数功能     : 主函数
+ 106          * 输    入       : 无
+ 107          * 输    出       : 无
+ 108          *******************************************************************************/
+ 109          void main()
+ 110          { 
+ 111   1        Ds1302Init();
+ 112   1        while(1)
+ 113   1        {
+ 114   2          datapros();  //数据处理函数
+ 115   2          DigDisplay();//数码管显示函数
+ 116   2          if (flag == 1)
+ 117   2          {
+C51 COMPILER V9.60.0.0   MAIN                                                              12/08/2020 18:31:05 PAGE 3   
+
+ 118   3            while (ctime-- > 0)
+ 119   3            {
+ 120   4              buzz = ~buzz;
+ 121   4              delay(10);
+ 122   4            }
+ 123   3            ctime = 10;
+ 124   3          }
+ 125   2        }   
+ 126   1      }
+ 127          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    301    ----
+   CONSTANT SIZE    =     19    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

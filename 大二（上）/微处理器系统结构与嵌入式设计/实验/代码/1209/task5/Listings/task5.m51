@@ -1,0 +1,188 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/16/2020  17:24:24  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objects\task5 PRINT (.\Listings\task5.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\task5 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0045H     UNIT         ?DT?MAIN
+            IDATA   004DH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001DH     UNIT         ?PR?MAIN?MAIN
+                    0020H     0003H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     0058H     UNIT         ?PR?DIGDISPLAY?MAIN
+            CODE    010AH     004EH     UNIT         ?C_INITSEG
+            CODE    0158H     0037H     UNIT         ?PR?TIMER1_INT?MAIN
+            CODE    018FH     0010H     UNIT         ?PR?_DELAY?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\task5 (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?DIGDISPLAY?MAIN
+
+?PR?DIGDISPLAY?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\task5 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/16/2020  17:24:24  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0026H         SEGMENT       ?C_C51STARTUP
+  I:004DH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0029H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0026H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0026H         LINE#         133
+  C:0028H         LINE#         134
+  C:0029H         LINE#         135
+  C:002AH         LINE#         136
+  C:002CH         LINE#         185
+  C:002FH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0158H         PUBLIC        timer1_int
+  B:00A8H.7       PUBLIC        EA
+  B:00A0H.2       PUBLIC        LA
+  B:00A0H.3       PUBLIC        LB
+  B:00A0H.4       PUBLIC        LC
+  C:018FH         PUBLIC        _delay
+  D:0008H         PUBLIC        tempstr
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0010H         PUBLIC        temp
+  D:008DH         PUBLIC        TH1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/16/2020  17:24:24  PAGE 3
+
+
+  D:0011H         PUBLIC        LED_CODE
+  B:0088H.6       PUBLIC        TR1
+  D:001CH         PUBLIC        SEG_CODE
+  D:004CH         PUBLIC        c
+  C:00B2H         PUBLIC        DigDisplay
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        c
+  C:018FH         LINE#         19
+  C:018FH         LINE#         20
+  C:018FH         LINE#         21
+  C:019EH         LINE#         22
+  -------         ENDPROC       _DELAY
+  -------         PROC          DIGDISPLAY
+  -------         DO            
+  D:0005H         SYMBOL        x
+  -------         ENDDO         
+  C:00B2H         LINE#         24
+  C:00B2H         LINE#         25
+  C:00B2H         LINE#         27
+  C:00BEH         LINE#         28
+  C:00BEH         LINE#         29
+  C:00F1H         LINE#         30
+  C:00FCH         LINE#         31
+  C:0103H         LINE#         32
+  C:0106H         LINE#         33
+  C:0109H         LINE#         34
+  -------         ENDPROC       DIGDISPLAY
+  -------         PROC          MAIN
+  C:0003H         LINE#         36
+  C:0003H         LINE#         37
+  C:0003H         LINE#         38
+  C:0006H         LINE#         39
+  C:0009H         LINE#         40
+  C:000CH         LINE#         41
+  C:000FH         LINE#         42
+  C:0012H         LINE#         44
+  C:0015H         LINE#         46
+  C:0017H         LINE#         47
+  C:0019H         LINE#         48
+  C:001BH         LINE#         50
+  C:001BH         LINE#         51
+  C:001BH         LINE#         52
+  C:001EH         LINE#         53
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER1_INT
+  C:0158H         LINE#         56
+  C:0163H         LINE#         59
+  C:0166H         LINE#         60
+  C:0168H         LINE#         62
+  C:0174H         LINE#         63
+  C:0176H         LINE#         64
+  C:017CH         LINE#         65
+  C:017EH         LINE#         68
+  C:0181H         LINE#         69
+  C:0184H         LINE#         70
+  C:0186H         LINE#         71
+  -------         ENDPROC       TIMER1_INT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/16/2020  17:24:24  PAGE 4
+
+
+  -------         ENDMOD        MAIN
+
+Program Size: data=78.0 xdata=0 code=412
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,291 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/04/2020 21:15:19 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          
+   5          typedef unsigned int uint;
+   6          typedef unsigned char uchar;
+   7          
+   8          #define KEYMAT P1
+   9          #define LED P0
+  10          uchar KeyValue;
+  11          uchar KeyState;
+  12          sbit LA = P2^2;
+  13          sbit LB = P2^3;
+  14          sbit LC = P2^4;
+  15          sbit K1 = P3^1; // Set Clock Time
+  16          sbit K2 = P3^0; // Backspace
+  17          sbit K3 = P3^2; // Confirm
+  18          sbit K4 = P3^3; // Cancel the Clock
+  19          sbit Clock_Mode_Led = P2^7; // Clock Mode Indicator
+  20          sbit Timer_Led = P2^6; // Timer Mode Indicator
+  21          sbit Clock_Led = P2^0; // Clock On-Working Indicator
+  22          sbit BUZZER = P1^5; // Clock
+  23          uchar LED_CODE[12] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x0,0x40};
+  24          uchar SEG_CODE[8][3] = {{1,1,1}, {1,1,0}, {1,0,1}, {1,0,0}, {0,1,1}, {0,1,0}, {0,0,1}, {0,0,0}};
+  25          uint INSTANT_TIME[8] = {0, 0, 11, 0, 0, 11, 0, 0};
+  26          uint CLOCK_TIME[8] = {10, 10, 11, 10, 10, 11, 10, 10};
+  27          uint Second_T = 2000;
+  28          uint Second_Count = 0;
+  29          uint Temp = 0;
+  30          uchar Clock_Mode_State = 0;
+  31          uchar Confirm_State = 0;
+  32          uchar Clock_On_Running = 0;
+  33          uint c = 0;
+  34          uchar FLAG = 0;
+  35          
+  36          void delay(uint i);
+  37          void delay_1ms(uint c);
+  38          void delay_10ms();
+  39          void MatrixKeyDown();
+  40          void DigDisplay(uint TIME_CODE[8]);
+  41          void GetKeyValue();
+  42          void Backspace();
+  43          void ClockWarning();
+  44          
+  45          void main()
+  46          {
+  47   1        TMOD = 0x10;
+  48   1        TH1 = (65536 - 500) / 256;
+  49   1        TL1 = (65536 - 500) % 256;
+  50   1        
+  51   1        EA = 1;
+  52   1        ET1 = 1;
+  53   1        TR1 = 1;
+  54   1        
+C51 COMPILER V9.60.0.0   MAIN                                                              12/04/2020 21:15:19 PAGE 2   
+
+  55   1        Timer_Led = ~Timer_Led;
+  56   1        //Clock_Led = 1;
+  57   1        
+  58   1        while(1)
+  59   1        {
+  60   2          GetKeyValue();
+  61   2          if (!Clock_Mode_State)
+  62   2            DigDisplay(INSTANT_TIME);
+  63   2          else
+  64   2            DigDisplay(CLOCK_TIME);
+  65   2          MatrixKeyDown();
+  66   2          if (KeyState && Clock_Mode_State)
+  67   2          {
+  68   3            KeyState = 0;
+  69   3            CLOCK_TIME[c] = KeyValue;
+  70   3            if (c < 8)
+  71   3              c++;
+  72   3            if (c == 2 || c == 5)
+  73   3              c++;
+  74   3          }
+  75   2          if (c == 8 && Confirm_State)
+  76   2          {
+  77   3            c = 0;
+  78   3            Clock_Mode_State = 0;
+  79   3            Confirm_State = 0;
+  80   3            Clock_On_Running = 1;
+  81   3            Timer_Led = ~Timer_Led;
+  82   3            Clock_Mode_Led = ~Clock_Mode_Led;
+  83   3            Clock_Led = ~Clock_Led;
+  84   3          }
+  85   2          ClockWarning();
+  86   2        }
+  87   1      }
+  88          
+  89          void delay_1ms(uint c)
+  90          {
+  91   1        uchar a, b;
+  92   1        for (; c > 0; c --)
+  93   1           for (b = 199; b > 0; b--)
+  94   1              for(a = 1; a > 0; a--);
+  95   1      }
+  96          
+  97          void delay_10ms()
+  98          {
+  99   1        uchar a,b,c;
+ 100   1        for(c=1;c>0;c--)
+ 101   1          for(b=38;b>0;b--)
+ 102   1            for(a=130;a>0;a--);   
+ 103   1      }
+ 104          
+ 105          void MatrixKeyDown()
+ 106          {
+ 107   1        char a;
+ 108   1        KEYMAT = 0x0f;
+ 109   1        if(KEYMAT != 0x0f)
+ 110   1        {
+ 111   2          delay_10ms();
+ 112   2          if(KEYMAT != 0x0f)
+ 113   2          {
+ 114   3            KeyState = 1;
+ 115   3            KEYMAT = 0X0F;
+ 116   3            switch(KEYMAT)
+C51 COMPILER V9.60.0.0   MAIN                                                              12/04/2020 21:15:19 PAGE 3   
+
+ 117   3            {
+ 118   4              case(0X07): KeyValue = 0;break;
+ 119   4              case(0X0b): KeyValue = 1;break;
+ 120   4              case(0X0d): KeyValue = 2;break;
+ 121   4              case(0X0e): KeyValue = 3;break;
+ 122   4            }
+ 123   3            KEYMAT = 0XF0;
+ 124   3            delay_10ms();
+ 125   3            switch(KEYMAT)
+ 126   3            {
+ 127   4              case(0X70): KeyValue = KeyValue;break;
+ 128   4              case(0Xb0): KeyValue = KeyValue+4;break;
+ 129   4              case(0Xd0): KeyValue = KeyValue+8;break;
+ 130   4              case(0Xe0): KeyValue = KeyValue+12;break;
+ 131   4            }
+ 132   3            while((a < 50)&&(KEYMAT != 0xf0))
+ 133   3            {
+ 134   4              delay_10ms();
+ 135   4              a++;
+ 136   4            }
+ 137   3            a = 0;
+ 138   3          }
+ 139   2        }
+ 140   1        
+ 141   1      
+ 142   1      }
+ 143          
+ 144          void delay(uint i)
+ 145          {
+ 146   1        while(i-- > 0);
+ 147   1      }
+ 148          
+ 149          void DigDisplay(uint TIME_CODE[8])
+ 150          {
+ 151   1        uchar c;
+ 152   1        for(c = 0; c < 8; c++)
+ 153   1        {
+ 154   2          LC = SEG_CODE[c][0];LB = SEG_CODE[c][1];LA = SEG_CODE[c][2];
+ 155   2          LED = LED_CODE[TIME_CODE[c]];
+ 156   2          if (c == 2 || c == 5)
+ 157   2            LED = 0x40;
+ 158   2          delay(100);
+ 159   2          LED = 0x0;
+ 160   2        }
+ 161   1      }
+ 162          
+ 163          void GetKeyValue()
+ 164          {
+ 165   1        if(K1 == 0)
+ 166   1        {
+ 167   2          delay_10ms();
+ 168   2          if (K1 == 0)
+ 169   2          {
+ 170   3            Clock_Mode_State = 1;
+ 171   3            Clock_Mode_Led = ~Clock_Mode_Led;
+ 172   3            Timer_Led = ~Timer_Led;
+ 173   3            while(!K1);
+ 174   3          }
+ 175   2        }
+ 176   1        
+ 177   1        if(K2 == 0)
+ 178   1        {
+C51 COMPILER V9.60.0.0   MAIN                                                              12/04/2020 21:15:19 PAGE 4   
+
+ 179   2          delay_10ms();
+ 180   2          if (K2 == 0)
+ 181   2          {
+ 182   3            Backspace();
+ 183   3            while(!K2);
+ 184   3          }
+ 185   2        }
+ 186   1        
+ 187   1        if(K3 == 0)
+ 188   1        {
+ 189   2          delay_10ms();
+ 190   2          if (K3 == 0)
+ 191   2          {
+ 192   3            Confirm_State = 1;
+ 193   3            while(!K3);
+ 194   3          }
+ 195   2        }
+ 196   1        
+ 197   1        if(K4 == 0)
+ 198   1        {
+ 199   2          delay_10ms();
+ 200   2          if (K4 == 0)
+ 201   2          {
+ 202   3            FLAG = 0;
+ 203   3            while(!K4);
+ 204   3          }
+ 205   2        }
+ 206   1      }
+ 207          
+ 208          void Backspace()
+ 209          {
+ 210   1        c--;
+ 211   1        if (c == 2 || c == 5)
+ 212   1          c--;
+ 213   1        CLOCK_TIME[c] = 0;
+ 214   1      }
+ 215          
+ 216          void Timer1_int() interrupt 3
+ 217          {
+ 218   1        uint t, H, M, S;
+ 219   1        
+ 220   1        TH1 = (65536 - 500) / 256;
+ 221   1        TL1 = (65536 - 500) % 256;
+ 222   1        t = Second_Count;
+ 223   1        Temp++;
+ 224   1        if (Temp == Second_T)
+ 225   1        {
+ 226   2          Second_Count++;
+ 227   2          Temp = 0;
+ 228   2          
+ 229   2          // Update the time
+ 230   2          H = t/3600;
+ 231   2          M = (t%3600)/60;
+ 232   2          S = t%3600%60;
+ 233   2          
+ 234   2          INSTANT_TIME[0] = H/10;
+ 235   2          INSTANT_TIME[1] = H%10;
+ 236   2          
+ 237   2          INSTANT_TIME[3] = M/10;
+ 238   2          INSTANT_TIME[4] = M%10;
+ 239   2          
+ 240   2          INSTANT_TIME[6] = S/10;
+C51 COMPILER V9.60.0.0   MAIN                                                              12/04/2020 21:15:19 PAGE 5   
+
+ 241   2          INSTANT_TIME[7] = S%10;
+ 242   2        }
+ 243   1        
+ 244   1        if (FLAG && Clock_On_Running)
+ 245   1          BUZZER = ~BUZZER;
+ 246   1      }
+ 247          
+ 248          void ClockWarning()
+ 249          {
+ 250   1        uchar i, CONSIST_TIME = 10;
+ 251   1        for(i = 0; i < 8;  i++)
+ 252   1        {
+ 253   2          if (INSTANT_TIME[i] != CLOCK_TIME[i])
+ 254   2          {
+ 255   3            return;
+ 256   3          }
+ 257   2        }
+ 258   1        FLAG = 1;
+ 259   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    933    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     82       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,114 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/20/2020 14:58:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          #define KEYMAT P1 
+   5          
+   6          uchar KeyState = 0;
+   7          uchar KeyValue;
+   8          
+   9          void MatrixKeyDown();
+  10          void delay_1ms(uint c);
+  11          
+  12          void main()
+  13          {
+  14   1        uchar temp = 0;
+  15   1        
+  16   1        KeyValue=0;
+  17   1        TMOD = 0x20;
+  18   1        TH1 = 0xf3;
+  19   1        TL1 = 0xf3;
+  20   1        SCON = 0x40;
+  21   1        PCON = 0x80;
+  22   1        TR1 = 1;
+  23   1        P1 = 0xf0;
+  24   1        ES =1;
+  25   1        EA = 1;
+  26   1        
+  27   1        while(1)
+  28   1        {
+  29   2          MatrixKeyDown();
+  30   2          
+  31   2          if(KeyState==1)
+  32   2          {
+  33   3            temp = KeyValue + 48;
+  34   3            SBUF = temp;  
+  35   3            KeyState=0;
+  36   3          }
+  37   2        }
+  38   1      }
+  39          
+  40          void MatrixKeyDown(void)
+  41          {
+  42   1        char a;
+  43   1        KEYMAT = 0x0f;
+  44   1        if(KEYMAT != 0x0f)
+  45   1        {
+  46   2          delay_1ms(1);
+  47   2          if(KEYMAT != 0x0f)
+  48   2          {
+  49   3            KeyState = 1;
+  50   3            KEYMAT = 0X0F;
+  51   3            switch(KEYMAT)
+  52   3            {
+  53   4              case(0X07): KeyValue = 0;break;
+  54   4              case(0X0b): KeyValue = 1;break;
+C51 COMPILER V9.60.0.0   MAIN                                                              12/20/2020 14:58:05 PAGE 2   
+
+  55   4              case(0X0d): KeyValue = 2;break;
+  56   4              case(0X0e): KeyValue = 3;break;
+  57   4            }
+  58   3            KEYMAT = 0XF0;
+  59   3            delay_1ms(1);
+  60   3            switch(KEYMAT)
+  61   3            {
+  62   4              case(0X70): KeyValue = KeyValue;break;
+  63   4              case(0Xb0): KeyValue = KeyValue+4;break;
+  64   4              case(0Xd0): KeyValue = KeyValue+8;break;
+  65   4              case(0Xe0): KeyValue = KeyValue+12;break;
+  66   4            }
+  67   3            while((a < 50)&&(KEYMAT != 0xf0))
+  68   3            {
+  69   4              delay_1ms(1);
+  70   4              a++;
+  71   4            }
+  72   3            a = 0;
+  73   3          }
+  74   2        }
+  75   1      }
+  76          
+  77          void delay_1ms(uint c)
+  78          {
+  79   1        uchar a, b;
+  80   1        for (; c > 0; c --)
+  81   1           for (b = 199; b > 0; b--)
+  82   1              for(a = 1; a > 0; a--);
+  83   1      }
+  84          
+  85          void int1() interrupt 4
+  86          {
+  87   1        TI = 0;
+  88   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    245    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,97 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              12/16/2020 17:24:24 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <string.h>
+   3          
+   4          typedef unsigned int uint;
+   5          typedef unsigned char uchar;
+   6          
+   7          uchar temp;
+   8          uchar tempstr[8] = {10, 10, 10, 10, 10, 10, 10, 10};
+   9          uchar c = 0;
+  10          
+  11          #define LED P0
+  12          sbit LA = P2^2;
+  13          sbit LB = P2^3;
+  14          sbit LC = P2^4;
+  15          
+  16          uchar LED_CODE[11] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x0};
+  17          uint SEG_CODE[8][3] = {{1,1,1}, {1,1,0}, {1,0,1}, {1,0,0}, {0,1,1}, {0,1,0}, {0,0,1}, {0,0,0}};
+  18          
+  19          void delay(uint c)
+  20          {
+  21   1        while(c-- > 0);
+  22   1      }
+  23          
+  24          void DigDisplay()
+  25          {
+  26   1        uchar x;
+  27   1        for(x = 0; x < 8; x++)
+  28   1        {
+  29   2          LC = SEG_CODE[x][0];LB = SEG_CODE[x][1];LA = SEG_CODE[x][2];
+  30   2          LED = LED_CODE[tempstr[x]];
+  31   2          delay(100);
+  32   2          LED = 0x0;
+  33   2        }
+  34   1      }
+  35          
+  36          void main()
+  37          {
+  38   1        TMOD = 0x20;
+  39   1        TH1 = 0xf3;
+  40   1        TH1 = 0xf3;
+  41   1        SCON = 0x50;
+  42   1        PCON = 0x80;
+  43   1        
+  44   1        P2 = 0xff;
+  45   1        
+  46   1        EA = 1;
+  47   1        ES = 1;
+  48   1        TR1 = 1;
+  49   1      
+  50   1        while(1)
+  51   1        {
+  52   2          DigDisplay();
+  53   2        }
+  54   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              12/16/2020 17:24:24 PAGE 2   
+
+  55          
+  56          void timer1_int() interrupt 4
+  57          {
+  58   1        
+  59   1        temp = SBUF;
+  60   1        RI = 0;
+  61   1        
+  62   1        tempstr[c] = temp - 48;
+  63   1        c++;
+  64   1        if (c == 8)
+  65   1          c = 0;
+  66   1        
+  67   1        // Test the data
+  68   1        SBUF = temp;
+  69   1        while(!TI);
+  70   1        TI = 0;            
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    188    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     69    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

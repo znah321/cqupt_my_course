@@ -1,0 +1,131 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/23/2020  11:34:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE test.obj TO RunLed
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  test.obj (TEST)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  RunLed (TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?TEST
+            DATA    0010H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0074H     UNIT         ?PR?DIGDISPLAY?TEST
+            CODE    0077H     0031H     UNIT         ?PR?MAIN?TEST
+            CODE    00A8H     0011H     UNIT         ?CO?TEST
+            CODE    00B9H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   RunLed (TEST)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEST
+
+?PR?MAIN?TEST                  0010H    0001H
+  +--> ?CO?TEST
+  +--> ?PR?DIGDISPLAY?TEST
+
+
+
+SYMBOL TABLE OF MODULE:  RunLed (TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0077H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/23/2020  11:34:37  PAGE 2
+
+
+  C:00A8H         PUBLIC        DIG_CODE
+  D:0008H         PUBLIC        DisplayData
+  B:00A0H.2       PUBLIC        LSA
+  B:00A0H.3       PUBLIC        LSB
+  B:00A0H.4       PUBLIC        LSC
+  C:0003H         PUBLIC        DigDisplay
+  -------         PROC          MAIN
+  -------         DO            
+  D:0010H         SYMBOL        i
+  -------         ENDDO         
+  C:0077H         LINE#         20
+  C:0077H         LINE#         21
+  C:0077H         LINE#         23
+  C:007EH         LINE#         24
+  C:0086H         LINE#         25
+  C:008DH         LINE#         26
+  C:0094H         LINE#         27
+  C:009AH         LINE#         28
+  C:009FH         LINE#         29
+  C:00A1H         LINE#         30
+  C:00A3H         LINE#         31
+  C:00A3H         LINE#         32
+  C:00A3H         LINE#         33
+  C:00A6H         LINE#         34
+  -------         ENDPROC       MAIN
+  -------         PROC          DIGDISPLAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         37
+  C:0003H         LINE#         38
+  C:0003H         LINE#         41
+  C:0005H         LINE#         42
+  C:0005H         LINE#         43
+  C:002AH         LINE#         44
+  C:002AH         LINE#         45
+  C:002AH         LINE#         46
+  C:002EH         LINE#         47
+  C:002EH         LINE#         48
+  C:0036H         LINE#         49
+  C:0036H         LINE#         50
+  C:003AH         LINE#         51
+  C:003AH         LINE#         52
+  C:0042H         LINE#         53
+  C:0042H         LINE#         54
+  C:0046H         LINE#         55
+  C:0046H         LINE#         56
+  C:004EH         LINE#         57
+  C:004EH         LINE#         58
+  C:0052H         LINE#         59
+  C:0052H         LINE#         60
+  C:0058H         LINE#         61
+  C:0058H         LINE#         62
+  C:005FH         LINE#         63
+  C:0063H         LINE#         64
+  C:006DH         LINE#         65
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/23/2020  11:34:37  PAGE 3
+
+
+  C:0070H         LINE#         66
+  C:0076H         LINE#         67
+  -------         ENDPROC       DIGDISPLAY
+  -------         ENDMOD        TEST
+
+Program Size: data=18.0 xdata=0 code=197
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

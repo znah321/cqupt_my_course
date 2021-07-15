@@ -1,0 +1,61 @@
+A51 MACRO ASSEMBLER  MY                                                                   03/09/2014 23:47:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00d
+OBJECT MODULE PLACED IN my.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\Keil3_51\C51\BIN\A51.EXE my.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;************;
+                       2     ;小灯控制程序;
+                       3     ;************;
+                       4     ;
+                       5     ;************;
+                       6     ;中断入口程序;
+                       7     ;************;
+                       8     ;
+0000                   9     ORG     0000H    ;程序执行开始地址
+0000 020024           10     LJMP    START    ;跳至START执行
+0003                  11     ORG     0003H    ;外中断0中断入口地址
+0003 32               12     RETI             ;中断返回（不开中断）
+000B                  13     ORG     000BH    ;定时器T0中断入口地址
+000B 32               14     RETI             ;中断返回（不开中断）
+0013                  15     ORG     0013H    ;外中断1中断入口地址
+0013 32               16     RETI             ;中断返回（不开中断）
+001B                  17     ORG     001BH    ;定时器T1中断入口地址
+001B 32               18     RETI             ;中断返回（不开中断）
+0023                  19     ORG     0023H    ;串行口中断入口地址
+0023 32               20     RETI             ;中断返回（不开中断）
+                      21     ;
+0024 74FE             22     START:      MOV     A,#0FEH             ;让ACC的内容为11111110
+0026 F590             23     LOOP:       MOV     P1,A           ;让P2口输出ACC的内容
+0028 F4               24                             CPL             A
+0029 112E             25                 CALL    DELAY       ;调用延时子程序
+002B 020026           26                 LJMP    LOOP         ;跳到LOOP处执行
+                      27     ;0.1秒延时子程序（12MHz晶振）===================
+002E 7FC8             28     DELAY:       MOV     R7,#200     ;R7寄存器加载200次数
+0030 7EFA             29     D1:          MOV     R6,#250     ;R6寄存器加载250次数
+0032 DEFE             30                  DJNZ    R6,$            ;本行执行R6次
+0034 DFFA             31                  DJNZ    R7,D1         ;D1循环执行R7次
+0036 22               32                  RET                  ;返回主程序
+                      33                  END                      结束程序
+A51 MACRO ASSEMBLER  MY                                                                   03/09/2014 23:47:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0030H   A   
+DELAY. . . . . . .  C ADDR   002EH   A   
+LOOP . . . . . . .  C ADDR   0026H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0024H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
